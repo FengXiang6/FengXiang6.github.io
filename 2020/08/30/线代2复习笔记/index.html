@@ -1,0 +1,125 @@
+<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><title>线代2复习笔记 | fx's blog</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/highlight.css"><link rel="stylesheet" type="text/css" href="/css/very-simple.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><meta name="generator" content="Hexo 5.1.1"></head><body><!-- include the sidebar--><!-- include ./includes/sidebar.jade--><!-- Blog title and subtitle--><header><div class="container header"><a id="logo" href="/." class="title">fx's blog</a><span class="subtitle">create and admire</span><label id="toggle-menu" for="menu" onclick><i class="fa fa-bars"></i></label></div></header><!-- use checkbox hack for toggle nav-bar on small screens--><input id="menu" type="checkbox"><!-- Navigation Links--><nav id="nav"><div class="container"><a href="/" class="sidebar-nav-item active">Home</a><a href="/archives" class="sidebar-nav-item">Archives</a><a href="/about" class="sidebar-nav-item">About</a></div></nav><div id="header-margin-bar"></div><!-- gallery that comes before the header--><div class="wrapper"><div class="container post-header"><h1>线代2复习笔记</h1></div></div><div class="wrapper"><div class="container meta"><div class="post-time">2020-08-30</div><div class="post-categories"><a class="post-category-link" href="/categories/math/">math</a></div><div class="post-tags"><a class="post-tag-none-link" href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" rel="tag">线性代数</a></div></div></div><article><div class="container post"><h2><a href="#ben-zheng-zhi-he-san-jiao" class="header-anchor">#</a><span id="ben-zheng-zhi-he-san-jiao">本征值和三角</span></h2><p><strong>有限维非零负向量空间上的每个算子都有本征值。</strong></p>
+<p>算子指的是$L(V,V)$的线性映射，简写作$L(V)$。我们假设空间的维度是$n$，然后找$n+1$个向量，这样它们一定线性相关。令它们的线性组合为零，则一定有非零系数。这样就可以对以这些系数为系数的算子多项式进行因式分解，而且这个多项式一定是零算子。进一步就可以推得一定有个因式不是单的，也就有了本征值。</p>
+<hr>
+<p><strong>在$C$上，每个算子都有上三角矩阵。</strong></p>
+<p>用数学归纳法证明。</p>
+<p>提示：设$U=range(T-\lambda I)$，证明它是不变子空间。利用$T|_{U}$（数学归纳法），得出小块的上三角。然后找到$U$的基扩充，再加以证明。</p>
+<p>顺便提一句，可以由上三角矩阵的对角线确定算子的本征值，不管定义在什么$F$域。</p>
+<hr>
+<p><strong>算子（如果有上三角阵）的可逆性等价于对角线全部不为0。</strong></p>
+<p>没啥好说的</p>
+<hr>
+<p><strong>算子可对角化等价于：</strong></p>
+<ul>
+<li><strong>有由本征向量构成的基</strong></li>
+<li><strong>可以分解成一维子空间的直和</strong></li>
+<li><strong>本征空间维度总和与$V$相等</strong></li>
+</ul>
+<p>关于最后一点，其实第二点的一维子空间可以看成所有本征空间的分解。</p>
+<hr>
+<p><strong>规范正交化</strong></p>
+<p>$e_j=\frac{v_j-&lt;v_j,e_1&gt;e_1-…-&lt;v_j,e_{j-1}&gt;e_{j-1}}{||v_j-&lt;v_j,e_1&gt;e_1-…-&lt;v_j,e_{j-1}&gt;e_{j-1}||}$</p>
+<p>正交化过程中，子向量组的张成空间不变。</p>
+<p>如$span(e_1,e_2,e_3)=span(v_1,v_2,v_3)$</p>
+<hr>
+<p><strong>舒尔定理：复向量空间算子关于某个规范正交基有上三角矩阵。</strong></p>
+<p>首先它肯定关于某个基有上三角矩阵，然后根据规范正交化过程中子向量组张成空间不变可以推出结论。</p>
+<p><strong>里斯表示定理：存在唯一的$u\in V$使得对任意$v\in V$有$\phi(v)=&lt;v,u&gt;$，其中$\phi$是线性泛函，也就是像空间是一维的。</strong></p>
+<hr>
+<h2><a href="#suan-zi-miao-shu" class="header-anchor">#</a><span id="suan-zi-miao-shu">算子描述</span></h2><p><strong>伴随$&lt;Tv,w&gt;=&lt;T^{*}w&gt;$，$(\lambda T)^*=\lambda^cT^*$</strong></p>
+<p>*<em>$M(T</em>)=(M(T)^T)^c$共轭转置，前提是行和列都要用规范正交基表示。**</p>
+<hr>
+<p>*<em>自伴$T=T</em>$。**</p>
+<ul>
+<li><p><strong>自伴算子都有本征值。</strong></p>
+</li>
+<li><p><strong>自伴算子的本征值都是实的。</strong></p>
+</li>
+<li><p><strong>在$C$上，任意$v$，$&lt;Tv,v&gt;=0\Rightarrow T=0$。</strong></p>
+</li>
+<li><p><strong>在$C$上，任意$v$，$&lt;Tv,v&gt;$为实数$\Rightarrow T$自伴。</strong></p>
+</li>
+<li><p><strong>$T$自伴，任意$v$，$&lt;Tv,v&gt;=0\Rightarrow T=0$。</strong></p>
+</li>
+<li><p><strong>自伴在不变子空间下还是自伴的</strong></p>
+</li>
+</ul>
+<p>第四点说明，在实内积空间上，需要更强的自伴条件，才能推出零算子。</p>
+<hr>
+<p><strong>正规$TT^*=T^*T$</strong></p>
+<ul>
+<li>*<em>正规当且仅当对任意$v$，有$||Tv||=||T^</em>v||$**</li>
+<li>*<em>若正规，则$T$与$T^</em>$具有相同的本征向量，但是对于这个本征向量而言，它对应的本征值互为共轭。**</li>
+<li><strong>若正规，不同本征值的本征向量正交。</strong></li>
+</ul>
+<p>提示：</p>
+<ol>
+<li><p>$&lt;T^*Tv,v&gt;=&lt;TT^*v,v&gt;$</p>
+</li>
+<li><p>$||(T-\lambda I)v||=||(T-\lambda I)^<em>v||=||(T^</em>-\lambda^cI)v||$</p>
+</li>
+<li><p>$(a-b)&lt;u,v&gt;=&lt;au,v&gt;-&lt;u,b^cv&gt;=&lt;Tu,v&gt;-&lt;u,T*v&gt;=0$</p>
+</li>
+</ol>
+<hr>
+<p><strong>复谱定理$F=C$：（以下条件等价）</strong></p>
+<ul>
+<li><strong>$T$是正规的</strong></li>
+<li><strong>$V$有一个$T$的本征向量组成的规范正交基</strong></li>
+<li><strong>$T$关于某个规范正交基有对角阵</strong></li>
+</ul>
+<p>证明正规的时候可以考虑对角阵乘法可以交换。</p>
+<p>先由舒尔定理得出关于某规范正交基有上三角阵，再证这个上三角实际上是对角。</p>
+<hr>
+<p><strong>实谱定理$F=R$：（以下条件等价）</strong></p>
+<ul>
+<li><strong>$T$是自伴的</strong></li>
+<li><strong>$V$有一个$T$的本征向量组成的规范正交基</strong></li>
+<li><strong>$T$关于某个规范正交基有对角阵</strong></li>
+</ul>
+<p>两个谱定理的不同点在于实空间要求更强的自伴条件。</p>
+<p>证明：归纳法。先拿出一个特征向量span成一维不变子空间，它的正交补也是不变子空间（维度变小，用归纳法）。这个时候就很自然的找到了对角阵。</p>
+<hr>
+<p><strong>正算子：首先自伴。并且任意$v$，有$&lt;Tv,v&gt; \geq0$。以下条件等价：</strong></p>
+<ul>
+<li><strong>正的</strong></li>
+<li><strong>自伴的而且所有本征值非负</strong></li>
+<li><strong>有正的平方根</strong></li>
+<li><strong>有自伴的平方根</strong></li>
+<li>*<em>存在算子$R$使得$T=R^</em>R$**</li>
+</ul>
+<ol>
+<li><p>&lt;Tv,v&gt;=&lt;av,v&gt;=a&lt;v,v&gt;</p>
+</li>
+<li><p>谱定理有本征向量的规范正交基。然后由$Re_j=\sqrt{\lambda_j}e_j$确定算子$R$</p>
+</li>
+<li><p>正的肯定是自伴的</p>
+</li>
+<li><p>$T=R^2=R^*R$</p>
+</li>
+<li><p>&lt;Tv,v&gt;=&lt;R*Rv,v&gt;=&lt;Rv,Rv&gt;</p>
+</li>
+</ol>
+<p><strong>每个正算子都有唯一的正平方根。</strong></p>
+<hr>
+<p><strong>等距同构算子：$||Sv||=||v||$。以下条件等价：</strong></p>
+<ul>
+<li><strong>等距同构</strong></li>
+<li><strong>保内积（因为内积可以由范数算出）</strong></li>
+<li><strong>规范正交基$e_1,e_2,…$的映射$Se_1,Se_2,…$也规范正交</strong></li>
+<li><strong>$SS^*=S^*S=I$</strong></li>
+<li>*<em>$S^</em>$是等距同构**</li>
+<li>*<em>$S$是可逆的并且$S^{-1}=S^</em>​**$</li>
+</ul>
+<hr>
+<p><strong>$F=C$，$S$等距同构等价于$V$有一个由$S$的本征向量组成的规范正交基并且本征值绝对值为1</strong></p>
+<hr>
+<p><strong>极分解：设$T\in L(V)$.则有一个等距同构$S\in L(V)$使得$T=S\sqrt{T^<em>T}$（$T^</em>T$一定是正算子）</strong></p>
+<p>考虑$F=C$的情况，由于$S$和$\sqrt{T^*T}$（唯一的正平方根，自伴）都是正规的，故根据复谱定理可以找到两组规范正交基使得他们对角化。</p>
+<p><strong>奇异值：就是$\sqrt{T^<em>T}$的本征值，而且要重复$dimE(\lambda,\sqrt{T^</em>T})$次。由于是正算子的本征值，所以肯定非负。也可以算$T^<em>T$的本征值 $\lambda$ 然后取非负平方根，重复$dimE(\lambda,T^</em>T)$</strong></p>
+<p><strong>奇异值分解：$Tv=s_1&lt;v,e_1&gt;f_1+…+s_n&lt;v,e_n&gt;f_n​</strong>$</p>
+<p>$M(T,(e_1,…,e_n),(f_1,…,f_n))=\left[ \begin{matrix} s_1 &amp;  &amp;  &amp;  &amp; 0\ &amp; . &amp;  &amp; &amp;  \   &amp;  &amp; . &amp; &amp; \ &amp; &amp;  &amp; . &amp;  \ 0 &amp; &amp; &amp; &amp; s_n \end{matrix} \right]$</p>
+</div><!-- comment system--><div class="container"><hr></div></article><footer id="footer"><div class="container"><div class="bar"><div class="social"><a href="/atom.xml" target="_blank"><i class="fa fa-rss"></i></a></div><div class="footer">© 2020 <a href="/" rel="nofollow">fx aka asososo</a>. Powered by <a rel="nofollow" target="_blank" href="https://hexo.io">Hexo</a>. Theme <a target="_blank" href="https://github.com/lotabout/very-simple">very-simple</a>.</div></div></div></footer><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.css"><script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script><script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script><script>$(document).ready(function() {
+    $(".fancybox").fancybox();
+});
+</script></body></html>
