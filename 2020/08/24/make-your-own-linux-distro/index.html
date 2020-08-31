@@ -1,8 +1,133 @@
-<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><title>make your own linux distro | fx's blog</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/highlight.css"><link rel="stylesheet" type="text/css" href="/css/very-simple.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><!-- hexo injector head_end start -->
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>make your own linux distro | fx&#39;s blog</title>
+    <meta name="description" content="A blog based on hexo."/>
+    <meta name="keywords" content="blog,cg,cv,ml"/>
+    <meta name="HandheldFriendly" content="True"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="google-site-verification" content=""/>
+    <meta name="baidu-site-verification" content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="自己写的finux发行版，根文件系统的构建还差点自主性。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="make your own linux distro">
+<meta property="og:url" content="http://yoursite.com/2020/08/24/make-your-own-linux-distro/index.html">
+<meta property="og:site_name" content="fx&#39;s blog">
+<meta property="og:description" content="自己写的finux发行版，根文件系统的构建还差点自主性。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/2020/08/24/make-your-own-linux-distro/1.3-1.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/24/make-your-own-linux-distro/1.3-3.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/24/make-your-own-linux-distro/1.3-4.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/24/make-your-own-linux-distro/1.3-5.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/24/make-your-own-linux-distro/1.3-6.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/24/make-your-own-linux-distro/1.3-7.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/24/make-your-own-linux-distro/1.3-8.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/24/make-your-own-linux-distro/1.3-9.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/24/make-your-own-linux-distro/1.3-10.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/24/make-your-own-linux-distro/1.3-2.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/24/make-your-own-linux-distro/1.4-2.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/24/make-your-own-linux-distro/1.4-1.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/24/make-your-own-linux-distro/1.4-1.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/24/make-your-own-linux-distro/1.4-2.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/24/make-your-own-linux-distro/1.4-3.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/24/make-your-own-linux-distro/1.5-2.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/24/make-your-own-linux-distro/1.5-1.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/24/make-your-own-linux-distro/1.5-1.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/24/make-your-own-linux-distro/1.5-3.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/24/make-your-own-linux-distro/1.5-4.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/24/make-your-own-linux-distro/1.5-5.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/24/make-your-own-linux-distro/1.5-6.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/24/make-your-own-linux-distro/1.5-7.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/24/make-your-own-linux-distro/1.5-8.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/24/make-your-own-linux-distro/1.5-9.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/24/make-your-own-linux-distro/1.6-3.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/24/make-your-own-linux-distro/1.6-1.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/24/make-your-own-linux-distro/1.6-2.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/24/make-your-own-linux-distro/2.1-1.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/24/make-your-own-linux-distro/2.2-1.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/24/make-your-own-linux-distro/2.2-2.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/24/make-your-own-linux-distro/2.3-1.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/24/make-your-own-linux-distro/2.4-1.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/24/make-your-own-linux-distro/2.4-2.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/24/make-your-own-linux-distro/2.4-3.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/24/make-your-own-linux-distro/3.4-1.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/24/make-your-own-linux-distro/3.4-2.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/24/make-your-own-linux-distro/3.4-3.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/24/make-your-own-linux-distro/3.7-1.png">
+<meta property="article:published_time" content="2020-08-24T14:27:36.000Z">
+<meta property="article:modified_time" content="2020-08-31T01:11:11.310Z">
+<meta property="article:author" content="fx aka asososo">
+<meta property="article:tag" content="发行版">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/08/24/make-your-own-linux-distro/1.3-1.png">
+    
+
+    <!-- Favicon -->
+    
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata|Roboto:300,400,700" rel="stylesheet">
+
+    
+<link rel="stylesheet" href="/style.css">
+
+    <script>
+      function setLoadingBarProgress(num) {
+        document.getElementById('loading-bar').style.width = num + "%";
+      }
+    </script>
+
+    
+<!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.1.1"></head><body><!-- include the sidebar--><!-- include ./includes/sidebar.jade--><!-- Blog title and subtitle--><header><div class="container header"><a id="logo" href="/." class="title">fx's blog</a><span class="subtitle">create and admire</span><label id="toggle-menu" for="menu" onclick><i class="fa fa-bars"></i></label></div></header><!-- use checkbox hack for toggle nav-bar on small screens--><input id="menu" type="checkbox"><!-- Navigation Links--><nav id="nav"><div class="container"><a href="/" class="sidebar-nav-item active">Home</a><a href="/archives" class="sidebar-nav-item">Archives</a><a href="/about" class="sidebar-nav-item">About</a></div></nav><div id="header-margin-bar"></div><!-- gallery that comes before the header--><div class="wrapper"><div class="container post-header"><h1>make your own linux distro</h1></div></div><div class="wrapper"><div class="container meta"><div class="post-time">2020-08-24</div><div class="post-categories"><a class="post-category-link" href="/categories/linux/">linux</a></div><div class="post-tags"><a class="post-tag-none-link" href="/tags/%E5%8F%91%E8%A1%8C%E7%89%88/" rel="tag">发行版</a></div></div></div><article><div class="container post"><p>自己写的finux发行版，根文件系统的构建还差点自主性。</p>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.1.1"></head>
+
+<body>
+
+<div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+<script>setLoadingBarProgress(20)</script>
+
+<div id="site-wrapper">
+
+    <header id="header">
+    <div id="header-wrapper" class="clearfix">
+        <a id="logo" href="/">
+            <img src="/img/logo.png"/>
+            <span id="site-desc">
+                create and admire
+            </span>
+        </a>
+        <button id="site-nav-switch">
+            <span class="icon icon-menu"></span>
+        </button>
+    </div>
+</header>
+    <script>setLoadingBarProgress(40);</script>
+
+    <main id="main" role="main">
+        <article id="post-make-your-own-linux-distro"
+         class="post article white-box article-type-post"
+         itemscope itemprop="blogPost">
+    <h2 class="title">
+        <a href="/2020/08/24/make-your-own-linux-distro/">
+            make your own linux distro
+        </a>
+    </h2>
+    <time>
+        Aug 24, 2020
+    </time>
+    <section class="content">
+        <div class="article-entry" itemprop="articleBody">
+            <p>自己写的finux发行版，根文件系统的构建还差点自主性。</p>
 <a id="more"></a>
 <h2><a href="#finux-bang-zhu-shou-ce" class="header-anchor">#</a><span id="finux-bang-zhu-shou-ce"> Finux 帮助手册</span></h2>
 <h3><a href="#1-an-zhuang-finux" class="header-anchor">#</a><span id="1-an-zhuang-finux"> 1 安装Finux</span></h3>
@@ -408,7 +533,203 @@
 <p>然而有很多问题是文档和论坛都不会有的。比如为什么会出现kernel panic？这串exit code代表了什么？我需要首先查看错误码的含义，猜测问题出现在内存大小上，然后再定位到大小过大的initrd，然后再找到编译内核过程中的问题，逐渐细化并解决问题。再比如calamares安装器的相关使用，相比较其他的开源项目，它的文档编写实在是太差了。差到需要亲自去查看它的源代码才能明白配置文件该怎么写。需要看源代码的还有casper，由于casper的安装会更改initrd（这是我之后才知道的），出现问题后我就解压initrd看其中的init内容，发现调用了casper脚本，再去casper脚本源码中找到确实了.disk信息。</p>
 <p>我觉得，做发行版可能不能提升太多脚本编写的能力，但会大大加强对系统底层的认识。从bootloader，kernel，initramfs。再到/sbin/init，casper和squashfs，紧接着再到systemd，xorg，再到lightdm和DE，一个系统从启动到运行的阶段被拆分开来，清晰地呈现在我的眼前。在配置lightdm的时候，我曾经遇到过很奇怪的问题：kde的桌面环境总是加载失败。为此，我查看了/var/log下的错误日志，发现是xorg没有被授予相关权限，导致初始化失败。而这仅仅是因为我不小心用了<code>chown</code>修改了文件夹所有者。</p>
 <p>总的来说，这个发行版还有很多可以完善的地方。首先，它使用现成的脚本来搭建rootfs，但是其实lfs提供了一套更自由的从零开始的方法。其次，由于使用apt的原因，它并没有自己的软件包仓库，一个完整的发行版应该有自己的软件包仓库和软件包管理器。最后，比起把所有软件集成到liveCD中，可以在image中建立partial mirror，使得安装器在安装过程中自动集成相关软件包。希望在以后的学习生活中，可以继续完善FInux！</p>
-</div><!-- comment system--><div class="container"><hr></div></article><footer id="footer"><div class="container"><div class="bar"><div class="social"><a href="/atom.xml" target="_blank"><i class="fa fa-rss"></i></a></div><div class="footer">© 2020 <a href="/" rel="nofollow">fx aka asososo</a>. Powered by <a rel="nofollow" target="_blank" href="https://hexo.io">Hexo</a>. Theme <a target="_blank" href="https://github.com/lotabout/very-simple">very-simple</a>.</div></div></div></footer><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.css"><script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script><script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script><script>$(document).ready(function() {
-    $(".fancybox").fancybox();
-});
-</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
+
+        </div>
+        <div class="article-tags tags">
+            
+                <a class="tag-none-link" href="/tags/%E5%8F%91%E8%A1%8C%E7%89%88/" rel="tag">发行版</a>
+            
+        </div>
+    </section>
+</article>
+
+
+
+
+
+        <script>setLoadingBarProgress(60);</script>
+    </main>
+
+    <footer id="footer" class="clearfix">
+
+    
+
+    <div class="social-wrapper">
+        
+            
+                <a href="https://github.com/FengXiang6" class="social github"
+                   target="_blank" rel="external">
+                    <span class="icon icon-github"></span>
+                </a>
+            
+        
+    </div>
+
+    <div class="theme-by">Theme <span class="codename">Memory</span> designed by <a href="https://artifact.me/"
+                                                                                    target="_blank">Art Chen</a>.
+    </div>
+    <div>&copy; <a href="/">fx&#39;s blog</a></div>
+
+</footer>
+
+
+    <script>setLoadingBarProgress(80);</script>
+    <div class="overlay"></div>
+</div>
+
+<div class="site-sidebar" id="site-sidebar">
+
+    
+
+    <div class="sidebar-switch clearfix show"
+         style="display: block">
+        <a class="dark-btn active" data-toggle="toc">
+            <span class="icon icon-list"></span>
+            <span class="text">Index</span>
+        </a>
+        <a class="dark-btn" data-toggle="bio">
+            <span class="icon icon-person"></span>
+            <span class="text">Bio</span>
+        </a>
+    </div>
+
+    <div class="site-toc show"
+         style="display: block">
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text"> Finux 帮助手册</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.1.</span> <span class="toc-text"> 1 安装Finux</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 1.1 获取Finux镜像</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 1.2 安装测试平台</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.1.3.</span> <span class="toc-text"> 1.3 在VMWare虚拟机上部署Finux</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-number">1.1.3.1.</span> <span class="toc-text"> 1.3.1 创建虚拟机</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-number">1.1.3.2.</span> <span class="toc-text"> 1.3.2 配置虚拟机网络</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-number">1.1.3.3.</span> <span class="toc-text"> 1.3.3 启动虚拟机</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.1.4.</span> <span class="toc-text"> 1.4 在Windows10 x64上部署Finux</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-number">1.1.4.1.</span> <span class="toc-text"> 1.4.1 移动存储介质</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-number">1.1.4.2.</span> <span class="toc-text"> 1.4.2 准备硬盘空间</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-number">1.1.4.3.</span> <span class="toc-text"> 1.4.3 烧录镜像</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-number">1.1.4.4.</span> <span class="toc-text"> 1.4.4 调整启动选项</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.1.5.</span> <span class="toc-text"> 1.5 通用安装步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-number">1.1.5.1.</span> <span class="toc-text"> 1.5.1 进入安装系统</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-number">1.1.5.2.</span> <span class="toc-text"> 1.5.2 安装Finux</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.1.6.</span> <span class="toc-text"> 1.6 可能出现的问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.2.</span> <span class="toc-text"> 2 使用Finux</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 2.1 启动Finux</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 2.2 系统信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.2.3.</span> <span class="toc-text"> 2.3 基本命令使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.2.4.</span> <span class="toc-text"> 2.4 基本软件使用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.3.</span> <span class="toc-text"> 3 构建Finux</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 3.1 发行版的基本构成要素</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-number">1.3.1.1.</span> <span class="toc-text"> 3.1.1 kernel</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link"><span class="toc-number">1.3.1.1.1.</span> <span class="toc-text"> 3.1.1.1 vmlinuz</span></a></li><li class="toc-item toc-level-6"><a class="toc-link"><span class="toc-number">1.3.1.1.2.</span> <span class="toc-text"> 3.1.1.2 initrd&#x2F;initramfs</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-number">1.3.1.2.</span> <span class="toc-text"> 3.1.2 file-system</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-number">1.3.1.3.</span> <span class="toc-text"> 3.1.3 bootloader</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-number">1.3.1.4.</span> <span class="toc-text"> 3.1.4 software</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 3.2 构建根文件系统工作环境</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-number">1.3.2.1.</span> <span class="toc-text"> 3.2.1 Debootstrap</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-number">1.3.2.2.</span> <span class="toc-text"> 3.2.2 更自由化的构建方式</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.3.3.</span> <span class="toc-text"> 3.3 配置软件包管理器</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-number">1.3.3.1.</span> <span class="toc-text"> 3.3.1 apt(debootstrap)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-number">1.3.3.2.</span> <span class="toc-text"> 3.3.2 pacman (debootstrap)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-number">1.3.3.3.</span> <span class="toc-text"> 3.3.3 pacman&#x2F;apt (非debootstrap)</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.3.4.</span> <span class="toc-text"> 3.4 编译内核</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-number">1.3.4.1.</span> <span class="toc-text"> 3.4.1 获取内核</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-number">1.3.4.2.</span> <span class="toc-text"> 3.4.2 安装依赖</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-number">1.3.4.3.</span> <span class="toc-text"> 3.4.3 内核相关配置</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-number">1.3.4.4.</span> <span class="toc-text"> 3.4.4 编译安装内核</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.3.5.</span> <span class="toc-text"> 3.5 图形化环境定制</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-number">1.3.5.1.</span> <span class="toc-text"> 3.5.1 tty登录提示</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-number">1.3.5.2.</span> <span class="toc-text"> 3.5.2 桌面环境</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-number">1.3.5.3.</span> <span class="toc-text"> 3.5.3 登录会话</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-number">1.3.5.4.</span> <span class="toc-text"> 3.5.4 启动动画</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.3.6.</span> <span class="toc-text"> 3.6 软件定制</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-number">1.3.6.1.</span> <span class="toc-text"> 3.6.1 通过apt定制</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-number">1.3.6.2.</span> <span class="toc-text"> 3.6.2 从网络上获取deb包定制</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.3.7.</span> <span class="toc-text"> 3.7 添加安装器</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-number">1.3.7.1.</span> <span class="toc-text"> 3.7.1 获取安装calamares</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-number">1.3.7.2.</span> <span class="toc-text"> 3.7.2 相关配置文件</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.3.8.</span> <span class="toc-text"> 3.8 其他工作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-number">1.3.8.1.</span> <span class="toc-text"> 3.8.1 添加calamares桌面入口</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-number">1.3.8.2.</span> <span class="toc-text"> 3.8.2 硬件检测软件包</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-number">1.3.8.3.</span> <span class="toc-text"> 3.8.3 发行版信息</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.3.9.</span> <span class="toc-text"> 3.9 制作liveCD镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-number">1.3.9.1.</span> <span class="toc-text"> 3.9.1 casper</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-number">1.3.9.2.</span> <span class="toc-text"> 3.9.2 isolinux</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-number">1.3.9.3.</span> <span class="toc-text"> 3.9.3 制作镜像</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.4.</span> <span class="toc-text"> 4 心得和体会</span></a></li></ol></li></ol>
+        
+    </div>
+
+    <div class="site-bio "
+         style="display: none">
+
+        <div class="about-me clearfix">
+            <div class="avatar">
+                <img src="/img/avatar.png"/>
+            </div>
+            <div class="info">
+                <a class="name dark-btn" href="/about">
+                    fx aka asososo
+                </a>
+            </div>
+            <div class="info">
+                <span class="item desc">
+                    
+                </span>
+            </div>
+        </div>
+
+        <div class="menu section">
+            <ul class="clearfix">
+                
+                    <li class="left">
+                        <a href="/about"
+                           onfocus="this.blur();"
+                           class="nav-about dark-btn block">
+                            About
+                        </a>
+                    </li>
+                
+                    <li class="right">
+                        <a href="/archives"
+                           onfocus="this.blur();"
+                           class="nav-archives dark-btn block">
+                            Archives
+                        </a>
+                    </li>
+                
+                    <li class="left">
+                        <a href="/categories"
+                           onfocus="this.blur();"
+                           class="nav-categories dark-btn block">
+                            Categories
+                        </a>
+                    </li>
+                
+                    <li class="right">
+                        <a href="/tags"
+                           onfocus="this.blur();"
+                           class="nav-tags dark-btn block">
+                            Tags
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="shortcuts">
+        <a href="#header" class="top window-nav dark-btn" id="go-top">
+            <span class="icon icon-chevron-thin-up"></span>
+        </a>
+        <a class="close dark-btn" id="sidebar-close">
+            <span class="icon icon-close"></span>
+        </a>
+        <a href="#footer" class="top window-nav dark-btn" id="go-bottom">
+            <span class="icon icon-chevron-thin-down"></span>
+        </a>
+    </div>
+
+</div>
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script>window.jQuery || document.write('<script src="/js/jquery.min.js"><\/script>')</script>
+
+
+<script src="/js/jquery.fitvids.js"></script>
+
+<script>
+  var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+  var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+  var ALGOLIA_API_KEY = "";
+  var ALGOLIA_APP_ID = "";
+  var ALGOLIA_INDEX_NAME = "";
+  var AZURE_SERVICE_NAME = "";
+  var AZURE_INDEX_NAME = "";
+  var AZURE_QUERY_KEY = "";
+  var SEARCH_SERVICE = "";
+  var universalSearchConfig = {};
+  if (SEARCH_SERVICE === 'google') {
+    universalSearchConfig = {
+      searchService: SEARCH_SERVICE,
+      apiKey: GOOGLE_CUSTOM_SEARCH_API_KEY,
+      engineId: GOOGLE_CUSTOM_SEARCH_ENGINE_ID,
+      imagePath: "/img/"
+    };
+  } else if (SEARCH_SERVICE === 'algolia') {
+    universalSearchConfig = {
+      searchService: SEARCH_SERVICE,
+      apiKey: ALGOLIA_API_KEY,
+      appId: ALGOLIA_APP_ID,
+      indexName: ALGOLIA_INDEX_NAME,
+      imagePath: "/img/"
+    };
+  } else if (SEARCH_SERVICE === 'azure') {
+    universalSearchConfig = {
+      searchService: SEARCH_SERVICE,
+      serviceName: AZURE_SERVICE_NAME,
+      indexName: AZURE_INDEX_NAME,
+      apiKey: AZURE_QUERY_KEY,
+      imagePath: "/img/"
+    };
+  }
+</script>
+
+<script src="/js/app.js"></script>
+
+
+<script src="/js/search.js"></script>
+
+
+
+
+
+<script>setLoadingBarProgress(100);</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
