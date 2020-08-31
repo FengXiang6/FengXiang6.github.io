@@ -1,409 +1,409 @@
-<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><title>make your own linux distro | fx's blog</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/highlight.css"><link rel="stylesheet" type="text/css" href="/css/very-simple.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><meta name="generator" content="Hexo 5.1.1"></head><body><!-- include the sidebar--><!-- include ./includes/sidebar.jade--><!-- Blog title and subtitle--><header><div class="container header"><a id="logo" href="/." class="title">fx's blog</a><span class="subtitle">create and admire</span><label id="toggle-menu" for="menu" onclick><i class="fa fa-bars"></i></label></div></header><!-- use checkbox hack for toggle nav-bar on small screens--><input id="menu" type="checkbox"><!-- Navigation Links--><nav id="nav"><div class="container"><a href="/" class="sidebar-nav-item active">Home</a><a href="/archives" class="sidebar-nav-item">Archives</a><a href="/about" class="sidebar-nav-item">About</a></div></nav><div id="header-margin-bar"></div><!-- gallery that comes before the header--><div class="wrapper"><div class="container post-header"><h1>make your own linux distro</h1></div></div><div class="wrapper"><div class="container meta"><div class="post-time">2020-08-24</div><div class="post-categories"><a class="post-category-link" href="/categories/linux/">linux</a></div><div class="post-tags"><a class="post-tag-none-link" href="/tags/%E5%8F%91%E8%A1%8C%E7%89%88/" rel="tag">发行版</a></div></div></div><article><div class="container post"><div class="toc">
+<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><title>make your own linux distro | fx's blog</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/highlight.css"><link rel="stylesheet" type="text/css" href="/css/very-simple.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css">
 
-<!-- toc -->
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.1.1"></head><body><!-- include the sidebar--><!-- include ./includes/sidebar.jade--><!-- Blog title and subtitle--><header><div class="container header"><a id="logo" href="/." class="title">fx's blog</a><span class="subtitle">create and admire</span><label id="toggle-menu" for="menu" onclick><i class="fa fa-bars"></i></label></div></header><!-- use checkbox hack for toggle nav-bar on small screens--><input id="menu" type="checkbox"><!-- Navigation Links--><nav id="nav"><div class="container"><a href="/" class="sidebar-nav-item active">Home</a><a href="/archives" class="sidebar-nav-item">Archives</a><a href="/about" class="sidebar-nav-item">About</a></div></nav><div id="header-margin-bar"></div><!-- gallery that comes before the header--><div class="wrapper"><div class="container post-header"><h1>make your own linux distro</h1></div></div><div class="wrapper"><div class="container meta"><div class="post-time">2020-08-24</div><div class="post-categories"><a class="post-category-link" href="/categories/linux/">linux</a></div><div class="post-tags"><a class="post-tag-none-link" href="/tags/%E5%8F%91%E8%A1%8C%E7%89%88/" rel="tag">发行版</a></div></div></div><article><div class="container post"><p>自己写的finux发行版，根文件系统的构建还差点自主性。</p>
+<a id="more"></a>
+<h2><a href="#finux-bang-zhu-shou-ce" class="header-anchor">#</a><span id="finux-bang-zhu-shou-ce"> Finux 帮助手册</span></h2>
+<h3><a href="#1-an-zhuang-finux" class="header-anchor">#</a><span id="1-an-zhuang-finux"> 1 安装Finux</span></h3>
+<h4><a href="#1-1-huo-qu-finux-jing-xiang" class="header-anchor">#</a><span id="1-1-huo-qu-finux-jing-xiang"> 1.1 获取Finux镜像</span></h4>
+<p>在与<code>guide</code>目录同级的<code>iso</code>目录下找到<code>finux.iso</code>镜像文件。</p>
+<h4><a href="#1-2-an-zhuang-ce-shi-ping-tai" class="header-anchor">#</a><span id="1-2-an-zhuang-ce-shi-ping-tai"> 1.2 安装测试平台</span></h4>
+<p>基于现有的资源，本人分别在VMWare虚拟机和Windows10 x64平台上进行了Finux发行版安装的测试。</p>
+<h4><a href="#1-3-zai-vmware-xu-ni-ji-shang-bu-shu-finux" class="header-anchor">#</a><span id="1-3-zai-vmware-xu-ni-ji-shang-bu-shu-finux"> 1.3 在VMWare虚拟机上部署Finux</span></h4>
+<h5><a href="#1-3-1-chuang-jian-xu-ni-ji" class="header-anchor">#</a><span id="1-3-1-chuang-jian-xu-ni-ji"> 1.3.1 创建虚拟机</span></h5>
+<p>打开<code>VMWare Workstation</code>，在笔者的测试机器上，版本为<code>WORKSTATION 15.5 PRO</code>。</p>
 <ul>
-<li><a href="#finux-bang-zhu-shou-ce">Finux 帮助手册</a><ul>
-<li><a href="#1-an-zhuang-finux">1 安装Finux</a></li>
-<li><a href="#2-shi-yong-finux">2 使用Finux</a></li>
-<li><a href="#3-gou-jian-finux">3 构建Finux</a></li>
-<li><a href="#4-xin-de-he-ti-hui">4 心得和体会</a></li>
-</ul>
+<li>
+<p>选择<code>文件</code>-&gt;<code>新建虚拟机</code>打开<strong>新建虚拟机向导</strong>界面。</p>
 </li>
-</ul>
-<!-- tocstop -->
-
-</div>
-
-<h2><span id="finux-bang-zhu-shou-ce">Finux 帮助手册</span><a href="#finux-bang-zhu-shou-ce" class="header-anchor">#</a></h2><h3><span id="1-an-zhuang-finux">1 安装Finux</span><a href="#1-an-zhuang-finux" class="header-anchor">#</a></h3><h4><span id="1-1-huo-qu-finux-jing-xiang">1.1 获取Finux镜像</span><a href="#1-1-huo-qu-finux-jing-xiang" class="header-anchor">#</a></h4><p>在与<code>guide</code>目录同级的<code>iso</code>目录下找到<code>finux.iso</code>镜像文件。</p>
-<h4><span id="1-2-an-zhuang-ce-shi-ping-tai">1.2 安装测试平台</span><a href="#1-2-an-zhuang-ce-shi-ping-tai" class="header-anchor">#</a></h4><p>基于现有的资源，本人分别在VMWare虚拟机和Windows10 x64平台上进行了Finux发行版安装的测试。</p>
-<h4><span id="1-3-zai-vmware-xu-ni-ji-shang-bu-shu-finux">1.3 在VMWare虚拟机上部署Finux</span><a href="#1-3-zai-vmware-xu-ni-ji-shang-bu-shu-finux" class="header-anchor">#</a></h4><h5><span id="1-3-1-chuang-jian-xu-ni-ji">1.3.1 创建虚拟机</span><a href="#1-3-1-chuang-jian-xu-ni-ji" class="header-anchor">#</a></h5><p>打开<code>VMWare Workstation</code>，在笔者的测试机器上，版本为<code>WORKSTATION 15.5 PRO</code>。</p>
-<ul>
-<li><p>选择<code>文件</code>-&gt;<code>新建虚拟机</code>打开<strong>新建虚拟机向导</strong>界面。</p>
+<li>
+<p>在开启的<strong>新建虚拟机向导</strong>界面选择<code>自定义(高级)(C)</code>，点击<code>下一步(N)&gt;</code>。</p>
 </li>
-<li><p>在开启的<strong>新建虚拟机向导</strong>界面选择<code>自定义(高级)(C)</code>，点击<code>下一步(N)&gt;</code>。</p>
+<li>
+<p><strong>硬件兼容性</strong>选择默认的<code>Workstation 15.x</code>，点击<code>下一步(N)&gt;</code>。</p>
 </li>
-<li><p><strong>硬件兼容性</strong>选择默认的<code>Workstation 15.x</code>，点击<code>下一步(N)&gt;</code>。</p>
+<li>
+<p><strong>安装来源</strong>选择<code>安装程序光盘映像文件(iso)(M)</code>，点击<code>浏览(R)...</code>选择在之前取得的<code>finux.iso</code>镜像文件。此时会给出警告*“无法检测此光盘映像中的操作系统。您需要指定要安装的操作系统。’’*不需要理会此条信息，点击<code>下一步(N)&gt;</code>。</p>
 </li>
-<li><p><strong>安装来源</strong>选择<code>安装程序光盘映像文件(iso)(M)</code>，点击<code>浏览(R)...</code>选择在之前取得的<code>finux.iso</code>镜像文件。此时会给出警告*“无法检测此光盘映像中的操作系统。您需要指定要安装的操作系统。’’*不需要理会此条信息，点击<code>下一步(N)&gt;</code>。</p>
-</li>
-<li><p><strong>客户机操作系统</strong>选择<code>其他(O)</code>，**版本(V)**选择<code>其他64位</code>，点击<code>下一步(N)&gt;</code>。</p>
+<li>
+<p><strong>客户机操作系统</strong>选择<code>其他(O)</code>，**版本(V)**选择<code>其他64位</code>，点击<code>下一步(N)&gt;</code>。</p>
 <div><img src="1.3-1.png" style="zoom:25%;" align="center"><img src="1.3-3.png" style="zoom:25%;" align="center"><img src="1.3-4.png" style="zoom:25%;" align="center"><img src="1.3-5.png" style="zoom:25%;" align="center"></div>
 </li>
-<li><p><strong>虚拟机名称</strong>和<strong>位置</strong>请用户自行选择，点击<code>下一步(N)&gt;</code>。</p>
+<li>
+<p><strong>虚拟机名称</strong>和<strong>位置</strong>请用户自行选择，点击<code>下一步(N)&gt;</code>。</p>
 </li>
-<li><p><strong>处理器配置</strong>请用户自行选择，点击<code>下一步(N)&gt;</code>。<em>笔者此处设置处理器数量为1，每个处理器内核数量为2。</em></p>
+<li>
+<p><strong>处理器配置</strong>请用户自行选择，点击<code>下一步(N)&gt;</code>。<em>笔者此处设置处理器数量为1，每个处理器内核数量为2。</em></p>
 </li>
-<li><p><strong>此虚拟机的内存</strong>请用户自行选择，至少分配<code>1.5GB</code>，点击<code>下一步(N)&gt;</code>。<em>笔者此处设置内存为4GB。</em></p>
+<li>
+<p><strong>此虚拟机的内存</strong>请用户自行选择，至少分配<code>1.5GB</code>，点击<code>下一步(N)&gt;</code>。<em>笔者此处设置内存为4GB。</em></p>
 </li>
-<li><p><strong>网络类型</strong>选择<code>使用网络地址转换(NAT)(E)</code>，点击<code>下一步(N)&gt;</code>。</p>
+<li>
+<p><strong>网络类型</strong>选择<code>使用网络地址转换(NAT)(E)</code>，点击<code>下一步(N)&gt;</code>。</p>
 </li>
-<li><p><strong>SCSI控制器</strong>选择<code>LSI Logic SAS(S)</code>，点击<code>下一步(N)&gt;</code>。</p>
+<li>
+<p><strong>SCSI控制器</strong>选择<code>LSI Logic SAS(S)</code>，点击<code>下一步(N)&gt;</code>。</p>
 </li>
-<li><p><strong>虚拟磁盘类型</strong>选择<code>SCSI(S)</code>，点击<code>下一步(N)&gt;</code>。</p>
+<li>
+<p><strong>虚拟磁盘类型</strong>选择<code>SCSI(S)</code>，点击<code>下一步(N)&gt;</code>。</p>
 <div><img src="1.3-6.png" style="zoom:25%;" align="center"><img src="1.3-7.png" style="zoom:25%;" align="center"><img src="1.3-8.png" style="zoom:25%;" align="center"></div>
 </li>
-<li><p><strong>磁盘</strong>选择<code>创建新虚拟磁盘(V)</code>，点击<code>下一步(N)&gt;</code>。</p>
+<li>
+<p><strong>磁盘</strong>选择<code>创建新虚拟磁盘(V)</code>，点击<code>下一步(N)&gt;</code>。</p>
 </li>
-<li><p><strong>最大磁盘大小</strong>指定为至少<code>10GB</code>，选择<code>将虚拟磁盘拆分成多个文件(M)</code>，点击<code>下一步(N)&gt;</code>。<em>笔者此处设置为30GB</em>。</p>
+<li>
+<p><strong>最大磁盘大小</strong>指定为至少<code>10GB</code>，选择<code>将虚拟磁盘拆分成多个文件(M)</code>，点击<code>下一步(N)&gt;</code>。<em>笔者此处设置为30GB</em>。</p>
 </li>
-<li><p><strong>磁盘文件命名</strong>请用户自行选择，点击<code>下一步(N)&gt;</code>。</p>
+<li>
+<p><strong>磁盘文件命名</strong>请用户自行选择，点击<code>下一步(N)&gt;</code>。</p>
 </li>
-<li><p>在<strong>已准备好创建虚拟机</strong>界面，检查虚拟机配置，点击<code>完成</code>。</p>
+<li>
+<p>在<strong>已准备好创建虚拟机</strong>界面，检查虚拟机配置，点击<code>完成</code>。</p>
 </li>
 </ul>
-<h5><span id="1-3-2-pei-zhi-xu-ni-ji-wang-luo">1.3.2 配置虚拟机网络</span><a href="#1-3-2-pei-zhi-xu-ni-ji-wang-luo" class="header-anchor">#</a></h5><p>在刚刚创建的虚拟机选项卡中，</p>
+<h5><a href="#1-3-2-pei-zhi-xu-ni-ji-wang-luo" class="header-anchor">#</a><span id="1-3-2-pei-zhi-xu-ni-ji-wang-luo"> 1.3.2 配置虚拟机网络</span></h5>
+<p>在刚刚创建的虚拟机选项卡中，</p>
 <ul>
-<li><p>点击工具栏<code>编辑</code>-&gt;<code>虚拟网络编辑器</code>。</p>
+<li>
+<p>点击工具栏<code>编辑</code>-&gt;<code>虚拟网络编辑器</code>。</p>
 </li>
-<li><p>在<strong>虚拟网络编辑器</strong>界面，找到类型为<code>NAT模式</code>的虚拟网络适配器名称<code>VMnet8</code>。您可能需要点击<code>更改设置</code>来获得管理员权限以浏览全部配置。</p>
+<li>
+<p>在<strong>虚拟网络编辑器</strong>界面，找到类型为<code>NAT模式</code>的虚拟网络适配器名称<code>VMnet8</code>。您可能需要点击<code>更改设置</code>来获得管理员权限以浏览全部配置。</p>
 </li>
-<li><p>退出<strong>虚拟网络编辑器</strong>。依次打开Windows电脑上的<code>控制面板</code>-&gt;<code>网络和Internet</code>-&gt;<code>网络和共享中心</code>-&gt;<code>更改适配器设置</code>，找到正在使用到的网卡设备。<em>笔者的电脑上为 Intel(R) Wireless-AC 9560</em>。右键点击此设备，选择<code>属性</code>-&gt;<code>共享</code>，勾选<code>允许其他网络用户通过此计算机的Internet来连接</code>，家庭网络连接选择<code>VMware Network Adapter VMnet8</code>，点击<code>确定</code>。</p>
+<li>
+<p>退出<strong>虚拟网络编辑器</strong>。依次打开Windows电脑上的<code>控制面板</code>-&gt;<code>网络和Internet</code>-&gt;<code>网络和共享中心</code>-&gt;<code>更改适配器设置</code>，找到正在使用到的网卡设备。<em>笔者的电脑上为 Intel® Wireless-AC 9560</em>。右键点击此设备，选择<code>属性</code>-&gt;<code>共享</code>，勾选<code>允许其他网络用户通过此计算机的Internet来连接</code>，家庭网络连接选择<code>VMware Network Adapter VMnet8</code>，点击<code>确定</code>。</p>
 <div><img src="1.3-9.png" style="zoom: 25%;"><img src="1.3-10.png" style="zoom: 25%;"><img src="1.3-2.png" style="zoom: 25%;"></div>
-
-
 </li>
 </ul>
-<h5><span id="1-3-3-qi-dong-xu-ni-ji">1.3.3 启动虚拟机</span><a href="#1-3-3-qi-dong-xu-ni-ji" class="header-anchor">#</a></h5><p>在刚刚创建的虚拟机选项卡中，</p>
+<h5><a href="#1-3-3-qi-dong-xu-ni-ji" class="header-anchor">#</a><span id="1-3-3-qi-dong-xu-ni-ji"> 1.3.3 启动虚拟机</span></h5>
+<p>在刚刚创建的虚拟机选项卡中，</p>
 <ul>
 <li>点击<code>开启此虚拟机</code>，然后进入<u>1.5 通用安装步骤</u>。</li>
 </ul>
-<h4><span id="1-4-zai-windows10-x64-shang-bu-shu-finux">1.4 在Windows10 x64上部署Finux</span><a href="#1-4-zai-windows10-x64-shang-bu-shu-finux" class="header-anchor">#</a></h4><h5><span id="1-4-1-yi-dong-cun-chu-jie-zhi">1.4.1 移动存储介质</span><a href="#1-4-1-yi-dong-cun-chu-jie-zhi" class="header-anchor">#</a></h5><p>请您准备一块移动存储介质以供烧录镜像。<em>笔者选用的是USB存储卡。</em></p>
-<h5><span id="1-4-2-zhun-bei-ying-pan-kong-jian">1.4.2 准备硬盘空间</span><a href="#1-4-2-zhun-bei-ying-pan-kong-jian" class="header-anchor">#</a></h5><p>请您准备一块空闲的磁盘空间以供Finux安装使用。</p>
+<h4><a href="#1-4-zai-windows10-x64-shang-bu-shu-finux" class="header-anchor">#</a><span id="1-4-zai-windows10-x64-shang-bu-shu-finux"> 1.4 在Windows10 x64上部署Finux</span></h4>
+<h5><a href="#1-4-1-yi-dong-cun-chu-jie-zhi" class="header-anchor">#</a><span id="1-4-1-yi-dong-cun-chu-jie-zhi"> 1.4.1 移动存储介质</span></h5>
+<p>请您准备一块移动存储介质以供烧录镜像。<em>笔者选用的是USB存储卡。</em></p>
+<h5><a href="#1-4-2-zhun-bei-ying-pan-kong-jian" class="header-anchor">#</a><span id="1-4-2-zhun-bei-ying-pan-kong-jian"> 1.4.2 准备硬盘空间</span></h5>
+<p>请您准备一块空闲的磁盘空间以供Finux安装使用。</p>
 <ul>
 <li>右键Windows开始菜单，选择<code>磁盘管理</code>打开界面。</li>
 <li>您可以选择使用一整块磁盘安装Finux，或者使用磁盘中的一部分来安装。如果使用后者，请先右键某一块磁盘，选择<code>压缩卷</code>来获得一块空闲空间。<strong>如果使用前者，请确保格式化磁盘之前已经备份好数据，此操作无法复原。</strong></li>
 </ul>
 <p>现在您已经准备好Finux系统所需要的硬盘空间了。</p>
 <img src="1.4-2.png" style="zoom: 33%" align="center">
-
-<h5><span id="1-4-3-shao-lu-jing-xiang">1.4.3 烧录镜像</span><a href="#1-4-3-shao-lu-jing-xiang" class="header-anchor">#</a></h5><p>现在您需要将Finux镜像烧录进U盘以使得它成为可引导启动的liveCD。</p>
+<h5><a href="#1-4-3-shao-lu-jing-xiang" class="header-anchor">#</a><span id="1-4-3-shao-lu-jing-xiang"> 1.4.3 烧录镜像</span></h5>
+<p>现在您需要将Finux镜像烧录进U盘以使得它成为可引导启动的liveCD。</p>
 <ul>
-<li>在<a target="_blank" rel="noopener" href="http://rufus.ie/%E4%B8%8B%E8%BD%BD%60rufus%60%E8%BD%AF%E4%BB%B6%E3%80%82">http://rufus.ie/下载`rufus`软件。</a></li>
+<li>在http://rufus.ie/下载<code>rufus</code>软件。</li>
 <li>打开<code>rufus</code>，<strong>设备</strong>选择准备好的移动存储介质，<strong>引导类型</strong>选择准备好的<code>finux.iso</code>，<strong>分区类型</strong>选择<code>MBR</code>，<strong>目标系统类型</strong>选择<code>BIOS(或UEFI-CSM)</code>。<strong>文件系统</strong>选择<code>FAT32(默认)</code>，<strong>簇大小</strong>选择<code>16K字节(默认)</code>，然后点击<code>开始</code>进行烧录。</li>
 </ul>
 <p>现在您已经准备好Finux的安装引导硬盘了。</p>
 <img src="1.4-1.png" style="zoom: 40%" align="center">
-
-<h5><span id="1-4-4-diao-zheng-qi-dong-xuan-xiang">1.4.4 调整启动选项</span><a href="#1-4-4-diao-zheng-qi-dong-xuan-xiang" class="header-anchor">#</a></h5><p>重启计算机，进入主板BIOS界面。<strong>不同计算机进入BIOS界面的方法不同，BIOS的用户交互界面也不同。</strong> <em>在笔者的计算机上，为按<code>F2</code>键进入界面</em>。</p>
+<h5><a href="#1-4-4-diao-zheng-qi-dong-xuan-xiang" class="header-anchor">#</a><span id="1-4-4-diao-zheng-qi-dong-xuan-xiang"> 1.4.4 调整启动选项</span></h5>
+<p>重启计算机，进入主板BIOS界面。<strong>不同计算机进入BIOS界面的方法不同，BIOS的用户交互界面也不同。</strong> <em>在笔者的计算机上，为按<code>F2</code>键进入界面</em>。</p>
 <img src="1.4-1.jpg" style="zoom: 33%" align="center">
-
 <ul>
-<li><p>调整启动模式为<code>Legacy启动</code>，即从BIOS启动。</p>
+<li>
+<p>调整启动模式为<code>Legacy启动</code>，即从BIOS启动。</p>
 </li>
-<li><p>允许<code>USB启动</code>。</p>
+<li>
+<p>允许<code>USB启动</code>。</p>
 </li>
-<li><p>调整USB介质为第一启动项。</p>
+<li>
+<p>调整USB介质为第一启动项。</p>
 <div><img src="1.4-2.jpg" style="zoom: 23%" align="center"><img src="1.4-3.jpg" style="zoom: 23%" align="center"></div>
 </li>
-<li><p>保存并退出BIOS界面，进入<u>1.5 通用安装步骤</u>。</p>
+<li>
+<p>保存并退出BIOS界面，进入<u>1.5 通用安装步骤</u>。</p>
 </li>
 </ul>
-<h4><span id="1-5-tong-yong-an-zhuang-bu-zou">1.5 通用安装步骤</span><a href="#1-5-tong-yong-an-zhuang-bu-zou" class="header-anchor">#</a></h4><h5><span id="1-5-1-jin-ru-an-zhuang-xi-tong">1.5.1 进入安装系统</span><a href="#1-5-1-jin-ru-an-zhuang-xi-tong" class="header-anchor">#</a></h5><ul>
-<li><p>等待引导程序初始化完成后，用户将看到<strong>isolinux引导界面</strong>。</p>
+<h4><a href="#1-5-tong-yong-an-zhuang-bu-zou" class="header-anchor">#</a><span id="1-5-tong-yong-an-zhuang-bu-zou"> 1.5 通用安装步骤</span></h4>
+<h5><a href="#1-5-1-jin-ru-an-zhuang-xi-tong" class="header-anchor">#</a><span id="1-5-1-jin-ru-an-zhuang-xi-tong"> 1.5.1 进入安装系统</span></h5>
+<ul>
+<li>
+<p>等待引导程序初始化完成后，用户将看到<strong>isolinux引导界面</strong>。</p>
 </li>
-<li><p>选择第一项<code>Enter live system</code>，回车进入安装系统。</p>
+<li>
+<p>选择第一项<code>Enter live system</code>，回车进入安装系统。</p>
 <img src="1.5-2.png" style="zoom:50%" align="center">
 </li>
-<li><p>KDE桌面环境会自动加载，在经历加载动画后，您就会进入Finux系统桌面。</p>
+<li>
+<p>KDE桌面环境会自动加载，在经历加载动画后，您就会进入Finux系统桌面。</p>
 </li>
 </ul>
 <div><img src="1.5-1.jpg" style="zoom:21%" align="center"><img src="1.5-1.png" style="zoom:15%" align="center"></div>
-
-<h5><span id="1-5-2-an-zhuang-finux">1.5.2 安装Finux</span><a href="#1-5-2-an-zhuang-finux" class="header-anchor">#</a></h5><p>双击启动桌面上的<code>Install</code>程序，进入到安装程序界面。</p>
+<h5><a href="#1-5-2-an-zhuang-finux" class="header-anchor">#</a><span id="1-5-2-an-zhuang-finux"> 1.5.2 安装Finux</span></h5>
+<p>双击启动桌面上的<code>Install</code>程序，进入到安装程序界面。</p>
 <ul>
-<li><p>选择您需要的语言，点击<code>下一步(N)</code>。默认语言为<code>简体中文(中国)</code>。</p>
+<li>
+<p>选择您需要的语言，点击<code>下一步(N)</code>。默认语言为<code>简体中文(中国)</code>。</p>
 </li>
-<li><p>选择您的位置和时区，点击<code>下一步(N)</code>。默认为<code>亚洲上海</code>。</p>
+<li>
+<p>选择您的位置和时区，点击<code>下一步(N)</code>。默认为<code>亚洲上海</code>。</p>
 </li>
-<li><p>选择您的键盘型号，点击<code>下一步(N)</code>。<em>笔者选择为<code>English(US) Default</code>。</em></p>
+<li>
+<p>选择您的键盘型号，点击<code>下一步(N)</code>。<em>笔者选择为<code>English(US) Default</code>。</em></p>
 </li>
-<li><p>选择您的分区方式，点击<code>下一步(N)</code>。<em>笔者建议对于使用整块磁盘的用户，直接选择<code>抹除磁盘</code>方式安装。</em></p>
+<li>
+<p>选择您的分区方式，点击<code>下一步(N)</code>。<em>笔者建议对于使用整块磁盘的用户，直接选择<code>抹除磁盘</code>方式安装。</em></p>
 </li>
-<li><p>检查您的计算机配置，点击<code>下一步(N)</code>。  </p>
+<li>
+<p>检查您的计算机配置，点击<code>下一步(N)</code>。</p>
 </li>
-<li><p>等待安装完成，点击<code>完成</code>重新启动计算机，进入新系统。</p>
+<li>
+<p>等待安装完成，点击<code>完成</code>重新启动计算机，进入新系统。</p>
 <div><img src="1.5-3.png" style="zoom:30%"><img src="1.5-4.png" style="zoom:30%"><img src="1.5-5.png" style="zoom:30%"><img src="1.5-6.png" style="zoom:30%"><img src="1.5-7.png" style="zoom:30%"><img src="1.5-8.png" style="zoom:30%"><img src="1.5-9.png" style="zoom:30%"></div>
-
 </li>
 </ul>
-<h4><span id="1-6-ke-neng-chu-xian-de-wen-ti">1.6 可能出现的问题</span><a href="#1-6-ke-neng-chu-xian-de-wen-ti" class="header-anchor">#</a></h4><ol>
-<li><p>由于rufus烧录自动添加了isolinux的原因，可能会覆盖原有的引导配置文件，导致启动时识别失败出现如下界面。在此界面下，用户只需输入<code>/casper/vmlinuz initrd=/casper/initrd.lz boot=casper</code>即可重新进入live系统进行Finux安装。这个操作等同于在<strong>isolinux引导界面</strong>选择<code>Enter live system</code>。</p>
+<h4><a href="#1-6-ke-neng-chu-xian-de-wen-ti" class="header-anchor">#</a><span id="1-6-ke-neng-chu-xian-de-wen-ti"> 1.6 可能出现的问题</span></h4>
+<ol>
+<li>
+<p>由于rufus烧录自动添加了isolinux的原因，可能会覆盖原有的引导配置文件，导致启动时识别失败出现如下界面。在此界面下，用户只需输入<code>/casper/vmlinuz initrd=/casper/initrd.lz boot=casper</code>即可重新进入live系统进行Finux安装。这个操作等同于在<strong>isolinux引导界面</strong>选择<code>Enter live system</code>。</p>
 <img src="1.6-3.jpg">
 </li>
-<li><p>在VMWare虚拟机上启动<code>Finux-liveCD/Finux</code>时，会出现NetworkManager加载失败的现象。这是由于dhclient进程没能正确初始化引起的，造成原因可能与VMWare的网卡适配器有关。此时用户可以使用<code>alt</code>+<code>ctrl</code>+<code>T</code>呼出终端窗口，输入<code>sudo /sbin/dhclient</code>重新加载dhclient进程即可。</p>
+<li>
+<p>在VMWare虚拟机上启动<code>Finux-liveCD/Finux</code>时，会出现NetworkManager加载失败的现象。这是由于dhclient进程没能正确初始化引起的，造成原因可能与VMWare的网卡适配器有关。此时用户可以使用<code>alt</code>+<code>ctrl</code>+<code>T</code>呼出终端窗口，输入<code>sudo /sbin/dhclient</code>重新加载dhclient进程即可。</p>
  <div><img src="1.6-1.png" style="zoom:83%"><img src="1.6-2.png" style="zoom:66%"></div>
-
 </li>
 </ol>
-<h3><span id="2-shi-yong-finux">2 使用Finux</span><a href="#2-shi-yong-finux" class="header-anchor">#</a></h3><h4><span id="2-1-qi-dong-finux">2.1 启动Finux</span><a href="#2-1-qi-dong-finux" class="header-anchor">#</a></h4><p>安装后的Finux使用grub作为引导程序，因此引导界面略有不同：</p>
+<h3><a href="#2-shi-yong-finux" class="header-anchor">#</a><span id="2-shi-yong-finux"> 2 使用Finux</span></h3>
+<h4><a href="#2-1-qi-dong-finux" class="header-anchor">#</a><span id="2-1-qi-dong-finux"> 2.1 启动Finux</span></h4>
+<p>安装后的Finux使用grub作为引导程序，因此引导界面略有不同：</p>
 <img src="2.1-1.png" style="zoom:80%">
-
-<h4><span id="2-2-xi-tong-xin-xi">2.2 系统信息</span><a href="#2-2-xi-tong-xin-xi" class="header-anchor">#</a></h4><div><img src="2.2-1.png" style="zoom:55%"><img src="2.2-2.png" style="zoom:40%"></div>
-
-<h4><span id="2-3-ji-ben-ming-ling-shi-yong">2.3 基本命令使用</span><a href="#2-3-ji-ben-ming-ling-shi-yong" class="header-anchor">#</a></h4><img src="2.3-1.png">
-
-<h4><span id="2-4-ji-ben-ruan-jian-shi-yong">2.4 基本软件使用</span><a href="#2-4-ji-ben-ruan-jian-shi-yong" class="header-anchor">#</a></h4><div><img src="2.4-1.png" style="zoom:22%"><img src="2.4-2.png" style="zoom:22%"><img src="2.4-3.png" style="zoom:22%"></div>
-
-<h3><span id="3-gou-jian-finux">3 构建Finux</span><a href="#3-gou-jian-finux" class="header-anchor">#</a></h3><p>构建Finux的过程即为构建自制发行版的过程。在本章节中，笔者将在分析linux发行版组成要素的同时讨论如何在实践中构建一个发行版。</p>
-<h4><span id="3-1-fa-xing-ban-de-ji-ben-gou-cheng-yao-su">3.1 发行版的基本构成要素</span><a href="#3-1-fa-xing-ban-de-ji-ben-gou-cheng-yao-su" class="header-anchor">#</a></h4><p>一个通用的发行版包含以下四个要素：kernel，file-system，bootloader和software。</p>
-<h5><span id="3-1-1-kernel">3.1.1 kernel</span><a href="#3-1-1-kernel" class="header-anchor">#</a></h5><h6><span id="3-1-1-1-vmlinuz">3.1.1.1 vmlinuz</span><a href="#3-1-1-1-vmlinuz" class="header-anchor">#</a></h6><p>我们平时指代的由linus开发的linux，其实指的是linux的内核。linux的内核是由C语言编写的，它负责存储管理、CPU和进程管理、文件系统、设备管理和驱动、网络通信，以及系统的初始化、系统调用等。在linux系统中，内核的存在形式往往是位于<code>/boot</code>目录下的<code>vmlinuz</code>镜像文件，它是内核编译的产物。</p>
-<h6><span id="3-1-1-2-initrd-initramfs">3.1.1.2 initrd/initramfs</span><a href="#3-1-1-2-initrd-initramfs" class="header-anchor">#</a></h6><p>与kernel镜像成对出现的往往是initrd或者initramfs。bootloader加载系统时，首先装入kernel。然后kernel需要执行文件系统下的<code>/sbin/init</code>，读取这个文件就必须先mount根文件系统。initrd/initramfs可以看做是kernel加载真正根文件系统之前要加载的虚拟根文件系统，它们作为中间跳板被使用。</p>
+<h4><a href="#2-2-xi-tong-xin-xi" class="header-anchor">#</a><span id="2-2-xi-tong-xin-xi"> 2.2 系统信息</span></h4>
+<div><img src="2.2-1.png" style="zoom:55%"><img src="2.2-2.png" style="zoom:40%"></div>
+<h4><a href="#2-3-ji-ben-ming-ling-shi-yong" class="header-anchor">#</a><span id="2-3-ji-ben-ming-ling-shi-yong"> 2.3 基本命令使用</span></h4>
+<img src="2.3-1.png">
+<h4><a href="#2-4-ji-ben-ruan-jian-shi-yong" class="header-anchor">#</a><span id="2-4-ji-ben-ruan-jian-shi-yong"> 2.4 基本软件使用</span></h4>
+<div><img src="2.4-1.png" style="zoom:22%"><img src="2.4-2.png" style="zoom:22%"><img src="2.4-3.png" style="zoom:22%"></div>
+<h3><a href="#3-gou-jian-finux" class="header-anchor">#</a><span id="3-gou-jian-finux"> 3 构建Finux</span></h3>
+<p>构建Finux的过程即为构建自制发行版的过程。在本章节中，笔者将在分析linux发行版组成要素的同时讨论如何在实践中构建一个发行版。</p>
+<h4><a href="#3-1-fa-xing-ban-de-ji-ben-gou-cheng-yao-su" class="header-anchor">#</a><span id="3-1-fa-xing-ban-de-ji-ben-gou-cheng-yao-su"> 3.1 发行版的基本构成要素</span></h4>
+<p>一个通用的发行版包含以下四个要素：kernel，file-system，bootloader和software。</p>
+<h5><a href="#3-1-1-kernel" class="header-anchor">#</a><span id="3-1-1-kernel"> 3.1.1 kernel</span></h5>
+<h6><a href="#3-1-1-1-vmlinuz" class="header-anchor">#</a><span id="3-1-1-1-vmlinuz"> 3.1.1.1 vmlinuz</span></h6>
+<p>我们平时指代的由linus开发的linux，其实指的是linux的内核。linux的内核是由C语言编写的，它负责存储管理、CPU和进程管理、文件系统、设备管理和驱动、网络通信，以及系统的初始化、系统调用等。在linux系统中，内核的存在形式往往是位于<code>/boot</code>目录下的<code>vmlinuz</code>镜像文件，它是内核编译的产物。</p>
+<h6><a href="#3-1-1-2-initrd-initramfs" class="header-anchor">#</a><span id="3-1-1-2-initrd-initramfs"> 3.1.1.2 initrd/initramfs</span></h6>
+<p>与kernel镜像成对出现的往往是initrd或者initramfs。bootloader加载系统时，首先装入kernel。然后kernel需要执行文件系统下的<code>/sbin/init</code>，读取这个文件就必须先mount根文件系统。initrd/initramfs可以看做是kernel加载真正根文件系统之前要加载的虚拟根文件系统，它们作为中间跳板被使用。</p>
 <p><code>initramfs</code> 的工作方式相比较来说更加简单直接一些：启动的时候加载内核和 initramfs 到内存执行，内核初始化之后，切换到用户态执行 initramfs的程序/脚本，加载需要的驱动模块、必要配置等，然后加载 rootfs 切换到真正的 rootfs 上去执行后续的 init 过程。</p>
-<h5><span id="3-1-2-file-system">3.1.2 file-system</span><a href="#3-1-2-file-system" class="header-anchor">#</a></h5><p>尽管内核是linux的核心，但文件却是用户与操作系统交互所采用的主要工具。这对linux来说尤其如此，这是因为在UNIX传统中，它使用文件I/O机制管理硬件设备和数据文件。</p>
+<h5><a href="#3-1-2-file-system" class="header-anchor">#</a><span id="3-1-2-file-system"> 3.1.2 file-system</span></h5>
+<p>尽管内核是linux的核心，但文件却是用户与操作系统交互所采用的主要工具。这对linux来说尤其如此，这是因为在UNIX传统中，它使用文件I/O机制管理硬件设备和数据文件。</p>
 <p>linux的文件系统遵循固定的架构，它包括根目录<code>/</code>以及其子目录<code>/bin</code>，<code>/boot</code>，<code>/home</code>，<code>/root</code>，<code>/var</code>等。它们各有用途，例如，<code>/bin</code>目录下就存放了供用户使用的linux命令的可执行文件，如bash/cat/cp/mv等。</p>
-<h5><span id="3-1-3-bootloader">3.1.3 bootloader</span><a href="#3-1-3-bootloader" class="header-anchor">#</a></h5><p>BootLoader是在操作系统内核运行之前运行。可以初始化硬件设备、建立内存空间映射图，从而将系统的软硬件环境带到一个合适状态，以便为最终调用操作系统内核准备好正确的环境。</p>
-<h5><span id="3-1-4-software">3.1.4 software</span><a href="#3-1-4-software" class="header-anchor">#</a></h5><p>一个linux发行版往往有大量的定制软件包。例如，广受欢迎的Linux Mint就有“开箱即用”的美誉，免去用户在安装系统后还要自己安装一系列满足基本使用需求软件的麻烦。</p>
+<h5><a href="#3-1-3-bootloader" class="header-anchor">#</a><span id="3-1-3-bootloader"> 3.1.3 bootloader</span></h5>
+<p>BootLoader是在操作系统内核运行之前运行。可以初始化硬件设备、建立内存空间映射图，从而将系统的软硬件环境带到一个合适状态，以便为最终调用操作系统内核准备好正确的环境。</p>
+<h5><a href="#3-1-4-software" class="header-anchor">#</a><span id="3-1-4-software"> 3.1.4 software</span></h5>
+<p>一个linux发行版往往有大量的定制软件包。例如，广受欢迎的Linux Mint就有“开箱即用”的美誉，免去用户在安装系统后还要自己安装一系列满足基本使用需求软件的麻烦。</p>
 <p>为了管理这些软件包，常常还需要有软件包管理器。例如debian系的apt和arch系的pacman。</p>
-<h4><span id="3-2-gou-jian-gen-wen-jian-xi-tong-gong-zuo-huan-jing">3.2 构建根文件系统工作环境</span><a href="#3-2-gou-jian-gen-wen-jian-xi-tong-gong-zuo-huan-jing" class="header-anchor">#</a></h4><h5><span id="3-2-1-debootstrap">3.2.1 Debootstrap</span><a href="#3-2-1-debootstrap" class="header-anchor">#</a></h5><p>debootstrap是debian/ubuntu下的一个工具，用来构建一套基本的系统(根文件系统)。生成的目录符合Linux文件系统标准(FHS)，即包含了<code>/boot</code>、<code>/etc</code>、<code>/bin</code>、<code>/usr</code>等等目录，但它只能算是“基本的系统”，没有强大的功能。</p>
+<h4><a href="#3-2-gou-jian-gen-wen-jian-xi-tong-gong-zuo-huan-jing" class="header-anchor">#</a><span id="3-2-gou-jian-gen-wen-jian-xi-tong-gong-zuo-huan-jing"> 3.2 构建根文件系统工作环境</span></h4>
+<h5><a href="#3-2-1-debootstrap" class="header-anchor">#</a><span id="3-2-1-debootstrap"> 3.2.1 Debootstrap</span></h5>
+<p>debootstrap是debian/ubuntu下的一个工具，用来构建一套基本的系统(根文件系统)。生成的目录符合Linux文件系统标准(FHS)，即包含了<code>/boot</code>、<code>/etc</code>、<code>/bin</code>、<code>/usr</code>等等目录，但它只能算是“基本的系统”，没有强大的功能。</p>
 <p>首先从debian软件仓库获取debootstrap软件包：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 之后第一行都会指明当前所在的目录，以免混淆</span></span><br><span class="line"><span class="built_in">cd</span> ~ <span class="comment">#进入家目录</span></span><br><span class="line">mkdir -p work/&#123;rootfs, debootstrap_src&#125; <span class="comment">#创建工作目录</span></span><br><span class="line"><span class="built_in">cd</span> work/debootstrap_src</span><br><span class="line">wget http://mirrors.ustc.edu.cn/debian/pool/main/d/debootstrap/debootstrap_1.0.114_all.deb </span><br></pre></td></tr></table></figure>
-
 <p>安装debootstrap软件包：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ~/work/debootstrap_src</span></span><br><span class="line">sudo dpkg -i debootstrap_1.0.114_all.deb</span><br></pre></td></tr></table></figure>
-
-<p>:grey_exclamation:    如果您正位于ubuntu操作系统上，这步操作将有不同。debian仓库中的debootstrap和ubuntu中的debootstrap不同，它们构建的文件系统有些许区别。</p>
+<p>❕	如果您正位于ubuntu操作系统上，这步操作将有不同。debian仓库中的debootstrap和ubuntu中的debootstrap不同，它们构建的文件系统有些许区别。</p>
 <p>使用debootstrap从清华源拉取debian的文件系统：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ~/work/debootstrap_src</span></span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line">sudo debootstrap --arch=amd64 buster rootfs http://mirrors.tuna.tsinghua.edu.cn/debian/</span><br><span class="line">sudo debootstrap --arch=amd64 focal  rootfs http://mirrors.tuna.tsinghua.edu.cn/ubuntu/</span><br></pre></td></tr></table></figure>
-
 <p><code>--arch</code>选项用来指定要拉取文件系统对应的CPU架构，笔者的CPU架构是<code>x86_64</code>，因此选择amd64。读者可以使用<code>uname -a</code>命令进行查看。<code>buster</code>是debian系统的版本号，这里也可以选择其他版本号。</p>
 <p>现在您已经具有一个基本完备的debian文件系统。</p>
-<h5><span id="3-2-2-geng-zi-you-hua-de-gou-jian-fang-shi">3.2.2 更自由化的构建方式</span><a href="#3-2-2-geng-zi-you-hua-de-gou-jian-fang-shi" class="header-anchor">#</a></h5><p>LFS，Linux From Scratch，是一种从源码构建Linux系统的方法。它的自由化可定制程度极高，选择安装哪些内置软件包全部由自己决定，相应的，难度也极大。在完成本版本的发行版开发后，可以考虑将第一步rootfs的搭建替换为lfs。事实上，debootstrap脚本的源码，就是lfs中的一顿折腾。</p>
-<h4><span id="3-3-pei-zhi-ruan-jian-bao-guan-li-qi">3.3 配置软件包管理器</span><a href="#3-3-pei-zhi-ruan-jian-bao-guan-li-qi" class="header-anchor">#</a></h4><p>Finux基于<code>Debian</code>进行开发，使用<code>apt</code>包管理器。</p>
-<h5><span id="3-3-1-apt-debootstrap">3.3.1 apt(debootstrap)</span><a href="#3-3-1-apt-debootstrap" class="header-anchor">#</a></h5><p>debootstrap拉取的debian文件系统已经自带deb系的apt包管理器。我们只需要更新apt仓库源为阿里源：</p>
+<h5><a href="#3-2-2-geng-zi-you-hua-de-gou-jian-fang-shi" class="header-anchor">#</a><span id="3-2-2-geng-zi-you-hua-de-gou-jian-fang-shi"> 3.2.2 更自由化的构建方式</span></h5>
+<p>LFS，Linux From Scratch，是一种从源码构建Linux系统的方法。它的自由化可定制程度极高，选择安装哪些内置软件包全部由自己决定，相应的，难度也极大。在完成本版本的发行版开发后，可以考虑将第一步rootfs的搭建替换为lfs。事实上，debootstrap脚本的源码，就是lfs中的一顿折腾。</p>
+<h4><a href="#3-3-pei-zhi-ruan-jian-bao-guan-li-qi" class="header-anchor">#</a><span id="3-3-pei-zhi-ruan-jian-bao-guan-li-qi"> 3.3 配置软件包管理器</span></h4>
+<p>Finux基于<code>Debian</code>进行开发，使用<code>apt</code>包管理器。</p>
+<h5><a href="#3-3-1-apt-debootstrap" class="header-anchor">#</a><span id="3-3-1-apt-debootstrap"> 3.3.1 apt(debootstrap)</span></h5>
+<p>debootstrap拉取的debian文件系统已经自带deb系的apt包管理器。我们只需要更新apt仓库源为阿里源：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ~/work</span></span><br><span class="line">sudo vim rootfs/etc/apt/sources.list</span><br></pre></td></tr></table></figure>
-
 <p>修改源文件如下：</p>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">deb http://mirrors.aliyun.com/ubuntu/ focal main restricted</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ focal universe</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ focal-updates universe</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ focal multiverse</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ focal-updates multiverse</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ focal-security main restricted</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ focal-security universe</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ focal-security multiverse</span><br></pre></td></tr></table></figure>
-
-<h5><span id="3-3-2-pacman-debootstrap">3.3.2 pacman (debootstrap)</span><a href="#3-3-2-pacman-debootstrap" class="header-anchor">#</a></h5><p>如果想使用debian的文件系统，但不想使用deb系的apt，可以采用这种办法。当然，这可能带来隐患。由于我们即将在子系统上编译构建debian，因此我们需要有一个切换到根文件的辅助脚本，帮助我们完成挂载宿主系统的相关信息。</p>
+<h5><a href="#3-3-2-pacman-debootstrap" class="header-anchor">#</a><span id="3-3-2-pacman-debootstrap"> 3.3.2 pacman (debootstrap)</span></h5>
+<p>如果想使用debian的文件系统，但不想使用deb系的apt，可以采用这种办法。当然，这可能带来隐患。由于我们即将在子系统上编译构建debian，因此我们需要有一个切换到根文件的辅助脚本，帮助我们完成挂载宿主系统的相关信息。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ~/work</span></span><br><span class="line">vim chroot.sh</span><br><span class="line">chmod 777 chroot.sh</span><br></pre></td></tr></table></figure>
-
 <p>根切换脚本内容如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">sudo mount --<span class="built_in">bind</span> /dev rootfs/dev</span><br><span class="line">sudo mount none -t proc rootfs/proc</span><br><span class="line">sudo mount none -t sysfs rootfs/sys</span><br><span class="line">sudo mount none -t devpts rootfs/dev/pts</span><br><span class="line">sudo chroot rootfs</span><br><span class="line"></span><br><span class="line">sudo umount rootfs/dev/pts</span><br><span class="line">sudo umount rootfs/sys</span><br><span class="line">sudo umount rootfs/proc</span><br><span class="line">sudo umount rootfs/dev</span><br></pre></td></tr></table></figure>
-
 <p>接着切换到子系统（之后将本机称为<strong>宿主系统</strong>，本机上的finux文件系统称为<strong>子系统</strong>）：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;host&#125; ~/work</span></span><br><span class="line">sudo bash chroot.sh</span><br></pre></td></tr></table></figure>
-
 <p>下载pacman源码：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;finux&#125; /</span></span><br><span class="line"><span class="comment"># apt update</span></span><br><span class="line">apt install wget</span><br><span class="line">apt install git</span><br><span class="line">mkdir -p make-distro/pacman</span><br><span class="line"><span class="built_in">cd</span> make-distro/pacman</span><br><span class="line">git <span class="built_in">clone</span> git://projects.archlinux.org/pacman.git</span><br></pre></td></tr></table></figure>
-
 <p>安装pacman：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;finux&#125; /make-distro/pacman</span></span><br><span class="line">apt install </span><br><span class="line">./autogen.sh</span><br><span class="line">./configure --<span class="built_in">disable</span>-doc</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
-
 <p>这之后就可以使用pacman替代apt包管理工具了。</p>
-<h5><span id="3-3-3-pacman-apt-fei-debootstrap">3.3.3 pacman/apt (非debootstrap)</span><a href="#3-3-3-pacman-apt-fei-debootstrap" class="header-anchor">#</a></h5><p>如果使用busybox或者lfs构建根文件系统，没有自带包管理器，将不能自动解决包依赖的问题。这时候需要检查pacman/apt的依赖，手动安装所有依赖。例如，在下文将列出apt包的部分逐层依赖：</p>
+<h5><a href="#3-3-3-pacman-apt-fei-debootstrap" class="header-anchor">#</a><span id="3-3-3-pacman-apt-fei-debootstrap"> 3.3.3 pacman/apt (非debootstrap)</span></h5>
+<p>如果使用busybox或者lfs构建根文件系统，没有自带包管理器，将不能自动解决包依赖的问题。这时候需要检查pacman/apt的依赖，手动安装所有依赖。例如，在下文将列出apt包的部分逐层依赖：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">- apt</span><br><span class="line">	- adduser</span><br><span class="line">		- debconf</span><br><span class="line">			- perl-base</span><br><span class="line">				- dpkg</span><br><span class="line">					- libbz2-1.0</span><br><span class="line">					- liblzma5</span><br><span class="line">					- libselinux1</span><br><span class="line">						- libpcre2-8-0</span><br><span class="line">					- libzstd1</span><br><span class="line">					- zlib1g</span><br><span class="line">					- tar</span><br><span class="line">						- libacl1</span><br><span class="line">		- passwd</span><br><span class="line">			- libaudit1</span><br><span class="line">				- libaudit-common</span><br><span class="line">				- libcap-ng0</span><br><span class="line">			- libpam-modules</span><br><span class="line">				- libpam-modules-bin</span><br><span class="line">			- libpam0g</span><br><span class="line">			- libsemanage1</span><br><span class="line">				- libsemanage-common</span><br><span class="line">				- libsepol1</span><br><span class="line">	- gpgv/gpgv1/gpgv2</span><br><span class="line">		- ......</span><br><span class="line">	- libapt-pkg6.0</span><br><span class="line">    	- ......</span><br><span class="line">	- libc6</span><br><span class="line">		- libcrypt1</span><br><span class="line">		- ......</span><br><span class="line">	- ......</span><br></pre></td></tr></table></figure>
-
 <p>可以看到，apt的依赖非常复杂，包含多层依赖关系。事实上，深层软件包还有可能和浅层软件包依赖发生关系。因此，手动安装包管理工具并不是一件容易的事情，笔者还是推荐搭配debootstrap使用自带的apt管理工具。</p>
-<h4><span id="3-4-bian-yi-nei-he">3.4 编译内核</span><a href="#3-4-bian-yi-nei-he" class="header-anchor">#</a></h4><p>Finux的内核版本为5.7.12。</p>
-<h5><span id="3-4-1-huo-qu-nei-he">3.4.1 获取内核</span><a href="#3-4-1-huo-qu-nei-he" class="header-anchor">#</a></h5><p>可以在<a target="_blank" rel="noopener" href="https://www.kernel.org/%E8%8E%B7%E5%BE%97%E6%9C%80%E6%96%B0%E7%9A%84linux">https://www.kernel.org/获得最新的linux</a> kernel文件。</p>
+<h4><a href="#3-4-bian-yi-nei-he" class="header-anchor">#</a><span id="3-4-bian-yi-nei-he"> 3.4 编译内核</span></h4>
+<p>Finux的内核版本为5.7.12。</p>
+<h5><a href="#3-4-1-huo-qu-nei-he" class="header-anchor">#</a><span id="3-4-1-huo-qu-nei-he"> 3.4.1 获取内核</span></h5>
+<p>可以在https://www.kernel.org/获得最新的linux kernel文件。</p>
 <img src="3.4-1.png">
-
 <p>我们使用wget命令获取kernel的源码压缩包：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;finux&#125; /</span></span><br><span class="line">mkdir -p make-distro/kernel</span><br><span class="line"><span class="built_in">cd</span> make-distro/kernel</span><br><span class="line">wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.7.12.tar.xz</span><br></pre></td></tr></table></figure>
-
 <p>压缩包是<code>.tar.xz</code>格式，这是两层压缩。外层是<code>xz</code>压缩，里层是<code>tar</code>压缩，所以分两步实现解压。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;finux&#125; /make-distro/kernel</span></span><br><span class="line">xz -d linux-5.7.12.tar.xz <span class="comment">#xz解压</span></span><br><span class="line">tar xvf linux-5.7.12.tar</span><br><span class="line"><span class="built_in">cd</span> linux-5.7.12</span><br><span class="line">ls</span><br></pre></td></tr></table></figure>
-
 <p>可以看到源代码的结构如下：</p>
 <img src="3.4-2.png">
-
-<h5><span id="3-4-2-an-zhuang-yi-lai">3.4.2 安装依赖</span><a href="#3-4-2-an-zhuang-yi-lai" class="header-anchor">#</a></h5><p>编译内核之前，我们需要先安装编译工具的相关依赖：</p>
+<h5><a href="#3-4-2-an-zhuang-yi-lai" class="header-anchor">#</a><span id="3-4-2-an-zhuang-yi-lai"> 3.4.2 安装依赖</span></h5>
+<p>编译内核之前，我们需要先安装编译工具的相关依赖：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;finux&#125; /make-distro/kernel/linux-5.7.12</span></span><br><span class="line">apt install gcc make libncurses5-dev openssl libssl-dev</span><br><span class="line">apt install build-essential</span><br><span class="line">apt install pkg-config</span><br><span class="line">apt install libc6-dev</span><br><span class="line">apt install bison</span><br><span class="line">apt install flex</span><br><span class="line">apt install libelf-dev</span><br></pre></td></tr></table></figure>
-
-<h5><span id="3-4-3-nei-he-xiang-guan-pei-zhi">3.4.3 内核相关配置</span><a href="#3-4-3-nei-he-xiang-guan-pei-zhi" class="header-anchor">#</a></h5><p>linux的内核使用KBUILD系统进行编译，我们可以事先调整KBUILD的参数实现内核参数的定制。相关参数的文档可以在<a target="_blank" rel="noopener" href="https://www.kernel.org/doc/html/latest/kbuild/kbuild.html%E6%9F%A5%E8%AF%A2%EF%BC%8C%E4%B9%9F%E5%8F%AF%E4%BB%A5%E7%9B%B4%E6%8E%A5%E6%9F%A5%E7%9C%8B%E6%BA%90%E4%BB%A3%E7%A0%81%E3%80%82%E6%AF%94%E5%A6%82%E9%80%9A%E8%BF%87%E6%9F%A5%E7%9C%8B%E4%B8%8B%E9%9D%A2%E8%BF%99%E4%B8%80%E6%AE%B5%E8%84%9A%E6%9C%AC%EF%BC%8C%E6%88%91%E4%BB%AC%E5%8F%AF%E4%BB%A5%E7%9F%A5%E9%81%93%E5%A6%82%E4%BD%95%E5%AE%9A%E5%88%B6%E5%86%85%E6%A0%B8%E5%90%8D%E5%AD%97%E5%92%8C%E5%86%85%E6%A0%B8%E7%89%88%E6%9C%AC%E3%80%82">https://www.kernel.org/doc/html/latest/kbuild/kbuild.html查询，也可以直接查看源代码。比如通过查看下面这一段脚本，我们可以知道如何定制内核名字和内核版本。</a></p>
+<h5><a href="#3-4-3-nei-he-xiang-guan-pei-zhi" class="header-anchor">#</a><span id="3-4-3-nei-he-xiang-guan-pei-zhi"> 3.4.3 内核相关配置</span></h5>
+<p>linux的内核使用KBUILD系统进行编译，我们可以事先调整KBUILD的参数实现内核参数的定制。相关参数的文档可以在https://www.kernel.org/doc/html/latest/kbuild/kbuild.html查询，也可以直接查看源代码。比如通过查看下面这一段脚本，我们可以知道如何定制内核名字和内核版本。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;finux&#125; /make-distro/kernel/linux-5.7.12</span></span><br><span class="line"><span class="built_in">export</span> KBUILD_BUILD_USER=FengXiang</span><br><span class="line"><span class="built_in">export</span> KBUILD_BUILD_HOST=Admire</span><br><span class="line"><span class="built_in">export</span> KBUILD_BUILD_VERSION=Finux-Kernel-5.7.12</span><br></pre></td></tr></table></figure>
-
 <p>然后启动图形配置界面自动生成kernel编译的相关参数。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;finux&#125; /make-distro/kernel/linux-5.7.12</span></span><br><span class="line">make menuconfig</span><br></pre></td></tr></table></figure>
-
 <img src="3.4-3.png">
-
 <p>按<code>→</code>键选择<code>Exit</code>之后回车退出，即可生成配置文件。然后我们就可以开始编译和安装了。</p>
-<h5><span id="3-4-4-bian-yi-an-zhuang-nei-he">3.4.4 编译安装内核</span><a href="#3-4-4-bian-yi-an-zhuang-nei-he" class="header-anchor">#</a></h5><p>编译内核：</p>
+<h5><a href="#3-4-4-bian-yi-an-zhuang-nei-he" class="header-anchor">#</a><span id="3-4-4-bian-yi-an-zhuang-nei-he"> 3.4.4 编译安装内核</span></h5>
+<p>编译内核：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;finux&#125; /make-distro/kernel/linux-5.7.12</span></span><br><span class="line">make</span><br></pre></td></tr></table></figure>
-
 <p>如果宿主机的CPU有多个内核，也可以启动多核编译。不过如果出现错误，多核编译因为不是序列式编译，debug会变得更加困难。笔者建议先用多核并行编译，如果出现错误，再用单核编译进行调试。</p>
 <p>多核编译，<code>-j</code>参数用于指定使用的CPU内核数量。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;finux&#125; /make-distro/kernel/linux-5.7.12</span></span><br><span class="line">make -j 8</span><br></pre></td></tr></table></figure>
-
 <p>内核的编译较为费时，需要等待半小时到一小时不等。编译完成后，先进行模块的安装。</p>
-<p>:grey_exclamation:    注意此处不需要安装所有模块，下面一句为不推荐的安装指令。这句指令会将所有模块关联到kernel和initrd，造成生成的initrd大小十分巨大（大约600MB），是正常情况下的十倍。如果bootloader使用这个initrd进行启动引导，会导致启动加载变慢，并且对内存要求较高。</p>
+<p>❕	注意此处不需要安装所有模块，下面一句为不推荐的安装指令。这句指令会将所有模块关联到kernel和initrd，造成生成的initrd大小十分巨大（大约600MB），是正常情况下的十倍。如果bootloader使用这个initrd进行启动引导，会导致启动加载变慢，并且对内存要求较高。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;finux&#125; /make-distro/kernel/linux-5.7.12</span></span><br><span class="line">make modules install</span><br></pre></td></tr></table></figure>
-
 <p>为解决这个问题，可以加一个跳过不必需模块的参数<code>INSTALL_MOD_STRIP=1</code>。模块安装完成后，就可以进行内核的安装。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;finux&#125; /make-distro/kernel/linux-5.7.12</span></span><br><span class="line">make INSTALL_MOD_STRIP=1 modules_install</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
-
 <p><code>make install</code>指令会自动在<code>/boot</code>目录下生成<code>vmlinuz</code>和<code>initrd.img</code>镜像和相关配置文件。除此之外，我们还需要检查默认的软链接是否正确。在本机上测试，默认情况下会出错，这个时候就需要纠正：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;finux&#125; /boot</span></span><br><span class="line">rm vmlinuz initrd.img <span class="comment">#移除错误的软链接</span></span><br><span class="line">ln -sf initrd.img-5.7.12 initrd.img <span class="comment">#创建正确的软链接</span></span><br><span class="line">ln -sf vmlinuz-5.7.12    vmlinuz</span><br></pre></td></tr></table></figure>
-
-<h4><span id="3-5-tu-xing-hua-huan-jing-ding-zhi">3.5 图形化环境定制</span><a href="#3-5-tu-xing-hua-huan-jing-ding-zhi" class="header-anchor">#</a></h4><h5><span id="3-5-1-tty-deng-lu-ti-shi">3.5.1 tty登录提示</span><a href="#3-5-1-tty-deng-lu-ti-shi" class="header-anchor">#</a></h5><p>在目前的情况下，我们还没有安装桌面环境。此时只能通过tty进行用户登录。既然是自制发行版，干脆把tty也做的炫酷一些。</p>
+<h4><a href="#3-5-tu-xing-hua-huan-jing-ding-zhi" class="header-anchor">#</a><span id="3-5-tu-xing-hua-huan-jing-ding-zhi"> 3.5 图形化环境定制</span></h4>
+<h5><a href="#3-5-1-tty-deng-lu-ti-shi" class="header-anchor">#</a><span id="3-5-1-tty-deng-lu-ti-shi"> 3.5.1 tty登录提示</span></h5>
+<p>在目前的情况下，我们还没有安装桌面环境。此时只能通过tty进行用户登录。既然是自制发行版，干脆把tty也做的炫酷一些。</p>
 <p>tty的登录提示和欢迎信息由<code>/etc/issue</code>和<code>/etc/motd</code>控制。<code>/etc/issue</code>与<code>/etc/motd</code>区别在于：当一个网络用户或通过串口登录系统 上时，<code>/etc/issue</code>的文件内容显示在login提示符之前，而<code>/etc/motd</code>内容显示在用户成功登录系统之后。 我们先改login提示符之前的信息，也就是<code>/etc/issue</code>。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;finux&#125; /</span></span><br><span class="line">vim /etc/issue</span><br><span class="line">vim /etc/issue.net <span class="comment">#当我们使用telnet连接主机时,登入提示是这个文件的内容</span></span><br></pre></td></tr></table></figure>
-
 <p>两个文件的内容都改为：</p>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Welcome to Finux(AKA Phoenix) by Feng Xiang \l \m \d</span><br></pre></td></tr></table></figure>
-
 <p><code>\d</code>为显示本地端时间日期，<code>\l</code>为显示为第几个tty终端机接口，<code>\m</code>显示硬件架构，<code>\n</code>显示主机网络名称，<code>\s</code>为显示操作系统名称。</p>
 <p>接着我们修改<code>/etc/motd</code>。这其实是一个在启动后生成的符号链接，指向<code>/var/run/motd</code>。找到生成的脚本在<code>/etc/update-motd.d</code>中，通过修改其目录下的<code>00-header</code>,<code>20-cpu-cheker</code>,<code>10-help-text</code>等文件可以进行修改。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;finux&#125; /etc/update-motd.d</span></span><br><span class="line">vim 10-help-text</span><br><span class="line"><span class="comment">######以下为文件内容######</span></span><br><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="built_in">printf</span> <span class="string">&quot;\n&quot;</span></span><br><span class="line"><span class="built_in">printf</span> <span class="string">&quot; * Documentation:  http://fx-admire.club\n&quot;</span></span><br><span class="line"><span class="built_in">printf</span> <span class="string">&quot; * Management:     http://fx-admire.club\n&quot;</span></span><br><span class="line"><span class="built_in">printf</span> <span class="string">&quot; * Support:        http://fx-admire.club\n&quot;</span></span><br><span class="line"><span class="comment">###########EOF##########</span></span><br></pre></td></tr></table></figure>
-
 <p>接着tty最后还会调用<code>/etc/legal</code>，我们也对其进行修改。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;finux&#125; /</span></span><br><span class="line">vim /etc/legal</span><br><span class="line"><span class="comment">######以下为文件内容######</span></span><br><span class="line">          ,</span><br><span class="line">      /\^/`\</span><br><span class="line">     | \/   |</span><br><span class="line">     | |    |                WELCOME TO FINUX!</span><br><span class="line">     \ \    /                                                _ _</span><br><span class="line">      <span class="string">&#x27;\\//&#x27;</span>                                               _&#123; <span class="string">&#x27; &#125;_</span></span><br><span class="line"><span class="string">        ||                      Feng Xiang                &#123; `.!.` &#125;</span></span><br><span class="line"><span class="string">        ||                &lt;3180103426@zju.edu.cn&gt;         &#x27;</span>,_/Y\_,<span class="string">&#x27;</span></span><br><span class="line"><span class="string">        ||  ,                                               &#123;_,_&#125;</span></span><br><span class="line"><span class="string">    |\  ||  |\                                                |</span></span><br><span class="line"><span class="string">    | | ||  | |               SUPPORT WEBSITE:              (\|  /)</span></span><br><span class="line"><span class="string">    | | || / /          &lt;http://www.fx-admire.club&gt;          \| //</span></span><br><span class="line"><span class="string">     \ \||/ /                                                 |//</span></span><br><span class="line"><span class="string">      `\\//`   \\   \./    \\ /     //    \\./   \\   //   \\ |/ /</span></span><br><span class="line"><span class="string">     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span></span><br><span class="line"><span class="string">###########EOF##########</span></span><br></pre></td></tr></table></figure>
-
 <p><em>文件中的图形效果由<code>boxes</code>程序生成</em>。</p>
 <p>至此tty登录提示定制完成。</p>
-<h5><span id="3-5-2-zhuo-mian-huan-jing">3.5.2 桌面环境</span><a href="#3-5-2-zhuo-mian-huan-jing" class="header-anchor">#</a></h5><p>Finux采用<code>kde</code>桌面环境。选择它的原因是它比较现代化，而且在ArchWiki上有较为详细的文档易于参考。与apt类似的，手动配置依赖安装桌面环境是一个非常折磨人的过程，因此笔者也选择用apt包管理工具自动安装它的依赖。</p>
+<h5><a href="#3-5-2-zhuo-mian-huan-jing" class="header-anchor">#</a><span id="3-5-2-zhuo-mian-huan-jing"> 3.5.2 桌面环境</span></h5>
+<p>Finux采用<code>kde</code>桌面环境。选择它的原因是它比较现代化，而且在ArchWiki上有较为详细的文档易于参考。与apt类似的，手动配置依赖安装桌面环境是一个非常折磨人的过程，因此笔者也选择用apt包管理工具自动安装它的依赖。</p>
 <p>安装桌面环境之前，我们首先安装桌面环境管理器。kde桌面环境可用的管理器有<code>lightdm</code>和<code>sddm</code>等。<code>Finux</code>使用的是<code>lightdm</code>。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;finux&#125; /</span></span><br><span class="line">apt install lightdm</span><br><span class="line">dpkg-reconfigure lightdm <span class="comment">#设置为默认桌面</span></span><br></pre></td></tr></table></figure>
-
 <p>接着安装kde桌面环境，这里可以选择安装<code>kde-plasma</code>或者<code>kde-standard</code>。前者为kde桌面环境的最小化安装，可能会缺少一些组件，我们选择安装第二个。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;finux&#125; /</span></span><br><span class="line">apt install kde-standard</span><br></pre></td></tr></table></figure>
-
 <p>检查现有资源：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;finux&#125; /</span></span><br><span class="line">cat /etc/X11/default-display-manager <span class="comment">#查看默认桌面环境管理器</span></span><br><span class="line">ls  /usr/share/xsessions             <span class="comment">#查看所有安装的桌面环境</span></span><br></pre></td></tr></table></figure>
-
 <p>编写lightdm配置文件：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;finux&#125; /etc/lightdm</span></span><br><span class="line">touch lightdm.conf.d/50-myconfig.conf</span><br><span class="line">cat &gt;lightdm.conf.d/50-myconfig.conf &lt;&lt;<span class="string">&quot;EOF&quot;</span></span><br><span class="line">&gt; [Seat:*]</span><br><span class="line">&gt; user-session=plasma</span><br><span class="line">&gt; EOF</span><br></pre></td></tr></table></figure>
-
-<h5><span id="3-5-3-deng-lu-hui-hua">3.5.3 登录会话</span><a href="#3-5-3-deng-lu-hui-hua" class="header-anchor">#</a></h5><p>可以选择安装的登录会话器有<code>lightdm-kde-greeter</code>，<code>lightdm-gtk-greeter</code>和<code>lightdm-unity-greeter</code>等。和kde风格完美适配的是<code>lightdm-kde-greeter</code>，但是不知道为什么，apt软件仓库并没有收录这个软件包。因此<code>Finux</code>采用<code>lightdm-gtk-greeter</code>。</p>
+<h5><a href="#3-5-3-deng-lu-hui-hua" class="header-anchor">#</a><span id="3-5-3-deng-lu-hui-hua"> 3.5.3 登录会话</span></h5>
+<p>可以选择安装的登录会话器有<code>lightdm-kde-greeter</code>，<code>lightdm-gtk-greeter</code>和<code>lightdm-unity-greeter</code>等。和kde风格完美适配的是<code>lightdm-kde-greeter</code>，但是不知道为什么，apt软件仓库并没有收录这个软件包。因此<code>Finux</code>采用<code>lightdm-gtk-greeter</code>。</p>
 <p>安装<code>lightdm-gtk-greeter</code>：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;finux&#125; /etc/lightdm</span></span><br><span class="line">apt install lightdm-gtk-greeter</span><br></pre></td></tr></table></figure>
-
 <p>然后在lightdm的配置文件中添加greeter启动项：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;finux&#125; /etc/lightdm</span></span><br><span class="line">ls /usr/share/xgreeters <span class="comment">#查看所有安装的greeter</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;greeter-session=lightdm-gtk-greeter&quot;</span> &gt;&gt;lightdm.conf/50-myconfig.conf</span><br></pre></td></tr></table></figure>
-
 <p><code>lightdm-gtk-greeter</code>自己的配置文件在同目录下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;finux&#125; /etc/lightdm</span></span><br><span class="line">cat &gt;lightdm-gtk-greeter.conf &lt;&lt;<span class="string">&quot;EOF&quot;</span></span><br><span class="line">&gt; [greeter]</span><br><span class="line">&gt; background=<span class="comment">#000000</span></span><br><span class="line">&gt; EOF</span><br></pre></td></tr></table></figure>
-
 <p>我们只讲登录会话的背景设置为黑色。</p>
-<h5><span id="3-5-4-qi-dong-dong-hua">3.5.4 启动动画</span><a href="#3-5-4-qi-dong-dong-hua" class="header-anchor">#</a></h5><p>启动动画由软件包<code>plymouth</code>控制，已经由脚本debootstrap自动安装进文件系统。更多自定义自动动画可以到<a target="_blank" rel="noopener" href="https://www.gnome-look.org下载.`finux`采用的启动动画可在`guide`的同级目录`build_src/plymouth%60%E4%B8%8B%E6%89%BE%E5%88%B0%E3%80%82%E5%B0%86%60Vinyl.tar.bz%60%E5%A4%8D%E5%88%B6%E5%88%B0%E6%A0%B9%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%B9%B6%E8%A7%A3%E5%8E%8B%E7%BC%A9%E3%80%82">https://www.gnome-look.org下载。`Finux`采用的启动动画可在`guide`的同级目录`build_src/plymouth`下找到。将`Vinyl.tar.bz`复制到根文件系统并解压缩。</a></p>
+<h5><a href="#3-5-4-qi-dong-dong-hua" class="header-anchor">#</a><span id="3-5-4-qi-dong-dong-hua"> 3.5.4 启动动画</span></h5>
+<p>启动动画由软件包<code>plymouth</code>控制，已经由脚本debootstrap自动安装进文件系统。更多自定义自动动画可以到https://www.gnome-look.org下载。<code>Finux</code>采用的启动动画可在<code>guide</code>的同级目录<code>build_src/plymouth</code>下找到。将<code>Vinyl.tar.bz</code>复制到根文件系统并解压缩。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;finux&#125; /</span></span><br><span class="line">mkdir -p make-distro/plymouth</span><br><span class="line"><span class="built_in">exit</span></span><br><span class="line"><span class="comment"># &#123;host&#125; ~/work</span></span><br><span class="line">sudo cp 147344-vinyl.tar.bz rootfs/make-distro/plymouth/</span><br><span class="line">bash chroot.sh</span><br><span class="line"><span class="comment"># &#123;finux&#125; /</span></span><br><span class="line"><span class="built_in">cd</span> make-distro/plymouth</span><br><span class="line">bzip -d 147344-vinyl.tar.bz</span><br><span class="line">tar xvf 147344-vinyl.tar</span><br><span class="line"><span class="built_in">cd</span> 147344-vinyl</span><br><span class="line">cp -R ./vinyl /usr/share/plymouth/themes/</span><br></pre></td></tr></table></figure>
-
 <p>接着我们进行启动动画的安装。plymouth主题存放路径已经变了，而网络上的主题还是对应的老版路径，那就是<code>/lib/plymouth/themes/</code>，之后已改为<code>/usr/share/plymouth/themes/</code>，所以我们首先更改一下配置文件：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;finux&#125; /</span></span><br><span class="line">vim /usr/share/plymouth/themes/vinyl/vinyl.plymouth</span><br></pre></td></tr></table></figure>
-
 <p>修改为如下内容：</p>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[Plymouth Theme]</span><br><span class="line">Name=Vinyl</span><br><span class="line">Description=My Little Pony bootsplash Vinyl Scratch DJ Pon3 version</span><br><span class="line">ModuleName=script</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[script]</span><br><span class="line">ImageDir=/usr/share/plymouth/themes/vinyl</span><br><span class="line">ScriptFile=/usr/share/plymouth/themes/vinyl/vinyl.script</span><br></pre></td></tr></table></figure>
-
 <p>然后进行安装：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;finux&#125; /usr/share</span></span><br><span class="line">update-alternatives --install \</span><br><span class="line">	plymouth/themes/default.plymouth \</span><br><span class="line">    default.plymouth \</span><br><span class="line">    plymouth/themes/vinyl/vinyl.plymouth \</span><br><span class="line">    100</span><br><span class="line">sudo update-alternatives --config default.plymouth <span class="comment">#手动选择序号</span></span><br></pre></td></tr></table></figure>
-
 <p>最后更新一下initramfs完成动画安装：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;finux&#125; /usr/share</span></span><br><span class="line">update-initramfs -u</span><br></pre></td></tr></table></figure>
-
-<h4><span id="3-6-ruan-jian-ding-zhi">3.6 软件定制</span><a href="#3-6-ruan-jian-ding-zhi" class="header-anchor">#</a></h4><h5><span id="3-6-1-tong-guo-apt-ding-zhi">3.6.1 通过apt定制</span><a href="#3-6-1-tong-guo-apt-ding-zhi" class="header-anchor">#</a></h5><p>安装文本编辑器Vim：</p>
+<h4><a href="#3-6-ruan-jian-ding-zhi" class="header-anchor">#</a><span id="3-6-ruan-jian-ding-zhi"> 3.6 软件定制</span></h4>
+<h5><a href="#3-6-1-tong-guo-apt-ding-zhi" class="header-anchor">#</a><span id="3-6-1-tong-guo-apt-ding-zhi"> 3.6.1 通过apt定制</span></h5>
+<p>安装文本编辑器Vim：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;finux&#125; /</span></span><br><span class="line">apt install vim</span><br></pre></td></tr></table></figure>
-
 <p>安装火狐浏览器：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;finux&#125; /</span></span><br><span class="line">apt install firefox</span><br></pre></td></tr></table></figure>
-
 <p>安装neofetch：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;finux&#125; /</span></span><br><span class="line">apt install neofetch</span><br></pre></td></tr></table></figure>
-
-<h5><span id="3-6-2-cong-wang-luo-shang-huo-qu-deb-bao-ding-zhi">3.6.2 从网络上获取deb包定制</span><a href="#3-6-2-cong-wang-luo-shang-huo-qu-deb-bao-ding-zhi" class="header-anchor">#</a></h5><p>在与<code>guide</code>同级的<code>build_src/software</code>下找到相应的<code>*.deb</code>软件包。</p>
+<h5><a href="#3-6-2-cong-wang-luo-shang-huo-qu-deb-bao-ding-zhi" class="header-anchor">#</a><span id="3-6-2-cong-wang-luo-shang-huo-qu-deb-bao-ding-zhi"> 3.6.2 从网络上获取deb包定制</span></h5>
+<p>在与<code>guide</code>同级的<code>build_src/software</code>下找到相应的<code>*.deb</code>软件包。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;host&#125; ~/work/software</span></span><br><span class="line">sudo cp code_1.48.0-1597304990_amd64.deb \</span><br><span class="line">	~/work/rootfs/make-distro/software/code_1.48.0-1597304990_amd64</span><br><span class="line">sudo cp netease-cloud-music_1.2.1_amd64_ubuntu_20190428.deb \</span><br><span class="line">	~/work/rootfs/make-distro/software/netease-cloud-music_1.2.1_amd64_ubuntu_20190428.deb</span><br></pre></td></tr></table></figure>
-
 <p>安装vscode：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;finux&#125; /make-distro/software</span></span><br><span class="line">dpkg -i code_1.48.0-1597304990_amd64.deb</span><br></pre></td></tr></table></figure>
-
 <p>安装网易云音乐：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;finux&#125; /make-distro/software</span></span><br><span class="line">dpkg -i netease-cloud-music_1.2.1_amd64_ubuntu_20190428.deb</span><br></pre></td></tr></table></figure>
-
-<h4><span id="3-7-tian-jia-an-zhuang-qi">3.7 添加安装器</span><a href="#3-7-tian-jia-an-zhuang-qi" class="header-anchor">#</a></h4><p><code>Finux</code>采用<code>calamares</code>作为安装器。Calamares是一个独立于发行版的系统安装程序，它具有先进的自动化模块序列功能，可以方便地部署在任何发行版上。Ubuntu已经在计划使用Calamares为默认安装器。</p>
-<h5><span id="3-7-1-huo-qu-an-zhuang-calamares">3.7.1 获取安装calamares</span><a href="#3-7-1-huo-qu-an-zhuang-calamares" class="header-anchor">#</a></h5><p>笔者选择从源代码构建calamares：</p>
+<h4><a href="#3-7-tian-jia-an-zhuang-qi" class="header-anchor">#</a><span id="3-7-tian-jia-an-zhuang-qi"> 3.7 添加安装器</span></h4>
+<p><code>Finux</code>采用<code>calamares</code>作为安装器。Calamares是一个独立于发行版的系统安装程序，它具有先进的自动化模块序列功能，可以方便地部署在任何发行版上。Ubuntu已经在计划使用Calamares为默认安装器。</p>
+<h5><a href="#3-7-1-huo-qu-an-zhuang-calamares" class="header-anchor">#</a><span id="3-7-1-huo-qu-an-zhuang-calamares"> 3.7.1 获取安装calamares</span></h5>
+<p>笔者选择从源代码构建calamares：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;finux&#125; /make-distro</span></span><br><span class="line">mkdir calamares_src</span><br><span class="line"><span class="built_in">cd</span> calamares_src</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/calamares/calamares.git</span><br><span class="line">cmake ..</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
-
 <p>笔者由于已经使用过宿主机一段时间的原因，在安装其他软件的时候已经安装过依赖文件。若读者想要从源代码构建calamares，可以用<code>apt-cache depends calamares</code>查询calamares相关的依赖：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">calamares</span><br><span class="line">  依赖: os-prober</span><br><span class="line">  依赖: libboost-python1.71.0</span><br><span class="line">  依赖: &lt;libboost-python1.71.0-py38&gt;</span><br><span class="line">    libboost-python1.71.0</span><br><span class="line">  依赖: libc6</span><br><span class="line">  依赖: libgcc-s1</span><br><span class="line">  依赖: libkf5coreaddons5</span><br><span class="line">  依赖: libkf5parts5</span><br><span class="line">  依赖: libkf5service-bin</span><br><span class="line">  依赖: libkf5service5</span><br><span class="line">  依赖: libkpmcore9</span><br><span class="line">  依赖: libparted2</span><br><span class="line">  依赖: libpwquality1</span><br><span class="line">  依赖: libpython3.8</span><br><span class="line">  依赖: libqt5core5a</span><br><span class="line">  依赖: libqt5dbus5</span><br><span class="line"> |依赖: libqt5gui5</span><br><span class="line">  依赖: libqt5gui5-gles</span><br><span class="line">  依赖: libqt5network5</span><br><span class="line">  依赖: libqt5qml5</span><br><span class="line"> |依赖: libqt5quick5</span><br><span class="line">  依赖: libqt5quick5-gles</span><br><span class="line">  依赖: libqt5quickwidgets5</span><br><span class="line">  依赖: libqt5svg5</span><br><span class="line">  依赖: libqt5webkit5</span><br><span class="line">  依赖: libqt5widgets5</span><br><span class="line">  依赖: libqt5xml5</span><br><span class="line">  依赖: libstdc++6</span><br><span class="line">  依赖: libyaml-cpp0.6</span><br><span class="line">  推荐: btrfs-progs</span><br><span class="line">    btrfs-progs:i386</span><br><span class="line">  推荐: squashfs-tools</span><br></pre></td></tr></table></figure>
-
-
-<h5><span id="3-7-2-xiang-guan-pei-zhi-wen-jian">3.7.2 相关配置文件</span><a href="#3-7-2-xiang-guan-pei-zhi-wen-jian" class="header-anchor">#</a></h5><p>calamares配置的具体说明可以在项目的github界面上找到，这里简单的带过说明。calamares的安装过程遵循用户自定义的模块化序列流程，分为可视化序列和执行序列。其中，可视化序列是和用户交互的窗口；执行序列，则是根据用户的输入，在安装过程中进行的一系列流程。</p>
+<h5><a href="#3-7-2-xiang-guan-pei-zhi-wen-jian" class="header-anchor">#</a><span id="3-7-2-xiang-guan-pei-zhi-wen-jian"> 3.7.2 相关配置文件</span></h5>
+<p>calamares配置的具体说明可以在项目的github界面上找到，这里简单的带过说明。calamares的安装过程遵循用户自定义的模块化序列流程，分为可视化序列和执行序列。其中，可视化序列是和用户交互的窗口；执行序列，则是根据用户的输入，在安装过程中进行的一系列流程。</p>
 <p>首先新建calamares的配置文件：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;finux&#125; /etc/calamares</span></span><br><span class="line">touch settings.conf</span><br><span class="line">vim settings.conf</span><br></pre></td></tr></table></figure>
-
 <p>以下为<code>settings.conf</code>的 文件内容：</p>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">- - -(没有空格)</span><br><span class="line">modules-search: [ local ]</span><br><span class="line"></span><br><span class="line">sequence:</span><br><span class="line">- show:</span><br><span class="line">  - welcome</span><br><span class="line">  - locale</span><br><span class="line">  - keyboard</span><br><span class="line">  - partition</span><br><span class="line">  - users</span><br><span class="line">  - summary</span><br><span class="line">- exec:</span><br><span class="line">  - partition</span><br><span class="line">  - mount</span><br><span class="line">  - unpackfs</span><br><span class="line">  - machineid</span><br><span class="line">  - fstab</span><br><span class="line">  - locale</span><br><span class="line">  - keyboard</span><br><span class="line">  - localecfg</span><br><span class="line">  - luksbootkeyfile</span><br><span class="line">  - users</span><br><span class="line">  - displaymanager</span><br><span class="line">  - networkcfg</span><br><span class="line">  - hwclock</span><br><span class="line">  - initramfscfg</span><br><span class="line">  - initramfs</span><br><span class="line">  - grubcfg</span><br><span class="line">  - bootloader</span><br><span class="line"></span><br><span class="line">branding: finux</span><br><span class="line">prompt-install: true</span><br><span class="line">dont-chroot: false</span><br><span class="line">oem-setup: false</span><br><span class="line">disable-cancel: false</span><br><span class="line">disable-cancel-during-exec: false</span><br></pre></td></tr></table></figure>
-
-
 <p>这些模块有的需要独立的配置文件，有的则不需要。如果不清楚，可以尝试在终端运行一遍<code>sudo calamares</code>，如若缺少相关配置文件，calamares会给出提示。注意，请在宿主机环境下运行宿主机的calamares进行测试，因为它需要活跃的图形环境。</p>
 <p>经测试，对于上述执行序列，需要配置文件的模块有：<code>bootloader</code>, <code>fstab.conf</code>, <code>machineid</code>, <code>partition</code>, <code>welcome</code>, <code>displaymanager</code>, <code>grubcfg</code>, <code>mount</code>, <code>unpackfs</code>, <code>finished</code>, <code>locale</code>, <code>pakages</code>, <code>users</code>。它们的配置放置在<code>/etc/calamares/modules</code>目录下：</p>
 <img src="3.7-1.png">
-
 <p>这里只展开其中<code>welcome.conf</code>的内容，其他文件可以在与<code>guide</code>同级的<code>build_src/calamares/modules</code>中找到。以下为<code>welcome.conf</code>的内容：</p>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">- - -(没有空格)</span><br><span class="line">showSupportUrl:         true</span><br><span class="line">showKnownIssuesUrl:     true</span><br><span class="line">showReleaseNotesUrl:    true</span><br><span class="line">showDonateUrl:  http://www.fx-admire.club</span><br><span class="line"></span><br><span class="line">requirements:</span><br><span class="line">    requiredStorage:    8</span><br><span class="line">    requiredRam:        0.5</span><br><span class="line">    internetCheckUrl:   http://www.fx-admire.club</span><br><span class="line"></span><br><span class="line">    check:</span><br><span class="line">        - storage</span><br><span class="line">        - ram</span><br><span class="line">        - power</span><br><span class="line">        - internet</span><br><span class="line">        - root</span><br><span class="line">    required:</span><br><span class="line">        - root</span><br><span class="line">        - storage</span><br><span class="line">        - ram</span><br><span class="line">geoip:</span><br><span class="line">    style:  &quot;json&quot;</span><br><span class="line">    url:    &quot;https://ipapi.co/json&quot;</span><br><span class="line">    selector: &quot;country&quot;</span><br></pre></td></tr></table></figure>
-
 <p>这个配置文件描述的是加载启动器后最开始的欢迎界面。其中<code>requirements</code>字段中分别指明了最小安装空间为8G和最小内存需求为500M。事实上，这些数值笔者并没有测试过，因此没有确切保证。之后的<code>required</code>字段指明了需要满足空间、内存需求和root权限。</p>
 <p>观察到<code>settings.conf</code>文件中的<code>branding</code>字段使用了<code>finux</code>。这表明在和用户交互的图形化界面中，将使用<code>/etc/calamares/branding/finux</code>文件夹中的配置文件进行定制化。这里只展开它的配置文件<code>branding.desc</code>：</p>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">componentName: finux</span><br><span class="line"></span><br><span class="line">windowExpanding:    fullscreen</span><br><span class="line"></span><br><span class="line">strings:</span><br><span class="line">    productName:         Finux(AKA Phoenix)</span><br><span class="line">    shortProductName:    Finux</span><br><span class="line">    version:             0.1</span><br><span class="line">    shortVersion:        0.1</span><br><span class="line">    versionedName:       Finux</span><br><span class="line">    shortVersionedName:  Finux</span><br><span class="line">    bootloaderEntryName: Finux</span><br><span class="line">    productUrl:          http://fx-admire.club</span><br><span class="line">    supportUrl:          http://fx-admire.club</span><br><span class="line"></span><br><span class="line">images:</span><br><span class="line">    productLogo:         &quot;logo.png&quot;</span><br><span class="line">    productIcon:         &quot;icon.png&quot;</span><br><span class="line">    productWelcome:      &quot;welcome.png&quot;</span><br><span class="line"></span><br><span class="line">slideshow:               &quot;show.qml&quot;</span><br><span class="line"></span><br><span class="line">slideshowAPI:            1</span><br><span class="line"></span><br><span class="line">style:</span><br><span class="line">   sidebarBackground:    &quot;#808080&quot;</span><br><span class="line">   sidebarText:          &quot;#FFFFFF&quot;</span><br><span class="line">   sidebarTextSelect:    &quot;#0068C8&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <p>这表明安装器将以全屏模式启动，使用指定的图片作为logo和欢迎界面图片。其中<code>slideshow</code>字段指明了安装过程中将使用该脚本进行ppt效果的图片呈现。</p>
 <p>其他文件可以在与<code>guide</code>同级目录下的<code>build_src/calamares/branding/finux</code>文件夹下找到。</p>
-<h4><span id="3-8-qi-ta-gong-zuo">3.8 其他工作</span><a href="#3-8-qi-ta-gong-zuo" class="header-anchor">#</a></h4><h5><span id="3-8-1-tian-jia-calamares-zhuo-mian-ru-kou">3.8.1 添加calamares桌面入口</span><a href="#3-8-1-tian-jia-calamares-zhuo-mian-ru-kou" class="header-anchor">#</a></h5><p>现在需要在kde桌面环境启动后，添加calamares安装程序的桌面入口。由于文件系统是从零创建的并且桌面环境同样如此，而且<code>live session user</code>是在liveCD的初始化过程被添加的，这就意味着，在我们工作的时候，是没有相关的用户目录和kde桌面配置文件的。因此，我们无法直接在文件系统中添加桌面入口。</p>
+<h4><a href="#3-8-qi-ta-gong-zuo" class="header-anchor">#</a><span id="3-8-qi-ta-gong-zuo"> 3.8 其他工作</span></h4>
+<h5><a href="#3-8-1-tian-jia-calamares-zhuo-mian-ru-kou" class="header-anchor">#</a><span id="3-8-1-tian-jia-calamares-zhuo-mian-ru-kou"> 3.8.1 添加calamares桌面入口</span></h5>
+<p>现在需要在kde桌面环境启动后，添加calamares安装程序的桌面入口。由于文件系统是从零创建的并且桌面环境同样如此，而且<code>live session user</code>是在liveCD的初始化过程被添加的，这就意味着，在我们工作的时候，是没有相关的用户目录和kde桌面配置文件的。因此，我们无法直接在文件系统中添加桌面入口。</p>
 <p>幸运的是，<code>lightdm</code>提供了数种hook，给用户在不同的时间段运行不同的脚本。</p>
 <p>首先修改lightdm的配置文件：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;finux&#125; /etc/lightdm</span></span><br><span class="line">cat &gt;&gt;lightdm.conf.d/50-myconfig.conf &lt;&lt;<span class="string">&quot;EOF&quot;</span></span><br><span class="line">&gt; display-stopped-script=/etc/lightdm/mkcalamares.sh</span><br><span class="line">&gt; greeter-setup-script=/etc/lightdm/mkcalamares.sh</span><br><span class="line">&gt; session-setup-script=/etc/lightdm/mkcalamares.sh</span><br><span class="line">&gt; session-cleanup-script=/etc/lightdm/mkcalamares.sh</span><br><span class="line">&gt; EOF</span><br></pre></td></tr></table></figure>
-
 <p>由于不太清楚这些阶段的边界，因此干脆直接全部调用。然后我们创建“负责创建桌面入口”的脚本：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;finux&#125; /etc/lightdm</span></span><br><span class="line">vim mkcalamares.sh</span><br><span class="line">chmod 777 mkcalamares.sh</span><br></pre></td></tr></table></figure>
-
 <p>脚本内容如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">ins_entry=/home/finux/Desktop/Install.desktop</span><br><span class="line"><span class="keyword">if</span> [ -d <span class="string">&quot;/home/finux&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">        mkdir /home/finux/Desktop</span><br><span class="line">        chown finux:finux /home/finux/Desktop</span><br><span class="line">        chmod 777 /home/finux/Desktop</span><br><span class="line">        chmod 777 /etc/calamares/branding/finux/*.png</span><br><span class="line">        touch <span class="variable">$ins_entry</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;[Desktop Entry]&quot;</span> &gt; <span class="variable">$ins_entry</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;Type=Application&quot;</span> &gt;&gt; <span class="variable">$ins_entry</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;Exec=sudo calamares&quot;</span> &gt;&gt; <span class="variable">$ins_entry</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;Name=Install&quot;</span> &gt;&gt; <span class="variable">$ins_entry</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;Icon=calamares&quot;</span> &gt;&gt; <span class="variable">$ins_entry</span></span><br><span class="line">        chmod 777 <span class="variable">$ins_entry</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
-
-<h5><span id="3-8-2-ying-jian-jian-ce-ruan-jian-bao">3.8.2 硬件检测软件包</span><a href="#3-8-2-ying-jian-jian-ce-ruan-jian-bao" class="header-anchor">#</a></h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;finux&#125; /</span></span><br><span class="line">apt install discover</span><br><span class="line">apt install laptop-detect</span><br><span class="line">apt install os-prober</span><br></pre></td></tr></table></figure>
-
-<h5><span id="3-8-3-fa-xing-ban-xin-xi">3.8.3 发行版信息</span><a href="#3-8-3-fa-xing-ban-xin-xi" class="header-anchor">#</a></h5><p>LSB是Linux Standard Base的缩写， lsb_release命令用来显示LSB和特定版本的相关信息。如果使用该命令时不带参数，则默认加上-v参数。lsb_release相关的配置文件在<code>/etc/lsb-release</code>：</p>
+<h5><a href="#3-8-2-ying-jian-jian-ce-ruan-jian-bao" class="header-anchor">#</a><span id="3-8-2-ying-jian-jian-ce-ruan-jian-bao"> 3.8.2 硬件检测软件包</span></h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;finux&#125; /</span></span><br><span class="line">apt install discover</span><br><span class="line">apt install laptop-detect</span><br><span class="line">apt install os-prober</span><br></pre></td></tr></table></figure>
+<h5><a href="#3-8-3-fa-xing-ban-xin-xi" class="header-anchor">#</a><span id="3-8-3-fa-xing-ban-xin-xi"> 3.8.3 发行版信息</span></h5>
+<p>LSB是Linux Standard Base的缩写， lsb_release命令用来显示LSB和特定版本的相关信息。如果使用该命令时不带参数，则默认加上-v参数。lsb_release相关的配置文件在<code>/etc/lsb-release</code>：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;finux&#125; /etc</span></span><br><span class="line">cat &gt;lsb-release &lt;&lt;<span class="string">&quot;EOF&quot;</span></span><br><span class="line">&gt; DISTRIB_ID=Finux</span><br><span class="line">&gt; DISTRIB_RELEASE=0.1</span><br><span class="line">&gt; DISTRIB_CODENAME=Finux</span><br><span class="line">&gt; DISTRIB_DESCRIPTION=<span class="string">&quot;Finux(AKA Phoenix)&quot;</span></span><br><span class="line">&gt; EOF</span><br></pre></td></tr></table></figure>
-
 <p><code>/etc/os-release</code>与<code>/usr/lib/os-release</code> 文件包含了操作系统识别数据。修改它们的内容如下：</p>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">NAME=&quot;Finux&quot;</span><br><span class="line">VERSION=&quot;0.1&quot;</span><br><span class="line">ID=finux</span><br><span class="line">ID_LIKE=debian</span><br><span class="line">PRETTY_NAME=&quot;Finux(AKA Phoenix)&quot;</span><br><span class="line">VERSION_ID=&quot;0.1&quot;</span><br><span class="line">HOME_URL=&quot;http://fx-admire.club&quot;</span><br><span class="line">SUPPORT_URL=&quot;http://fx-admire.club&quot;</span><br><span class="line">BUG_REPORT_URL=&quot;http://fx-admire.club&quot;</span><br><span class="line">PRIVACY_POLICY_URL=&quot;http://fx-admire.club&quot;</span><br><span class="line">VERSION_CODENAME=phoenix</span><br><span class="line">UBUNTU_CODENAME=phoenix</span><br></pre></td></tr></table></figure>
-
-<h4><span id="3-9-zhi-zuo-livecd-jing-xiang">3.9 制作liveCD镜像</span><a href="#3-9-zhi-zuo-livecd-jing-xiang" class="header-anchor">#</a></h4><p>linux可以使用<code>grub</code>或者<code>isolinux</code>进行引导。</p>
+<h4><a href="#3-9-zhi-zuo-livecd-jing-xiang" class="header-anchor">#</a><span id="3-9-zhi-zuo-livecd-jing-xiang"> 3.9 制作liveCD镜像</span></h4>
+<p>linux可以使用<code>grub</code>或者<code>isolinux</code>进行引导。</p>
 <p><code>Finux-liveCD</code>使用<code>isolinux</code>进行引导，<code>Finux</code>使用<code>grub</code>进行引导。</p>
-<h5><span id="3-9-1-casper">3.9.1 casper</span><a href="#3-9-1-casper" class="header-anchor">#</a></h5><p>casper是配合squashfs使用的一个脚本程序，它会改变initrd的内容。squashfs的全称是squash-file-system，他是一种高度压缩的文件系统，可以大大减小空间占用量。相比较直接使用暴露的文件系统，我们会先将文件系统压缩成squashfs格式，并向bootloader的命令行传入<code> boot=casper</code>参数。</p>
+<h5><a href="#3-9-1-casper" class="header-anchor">#</a><span id="3-9-1-casper"> 3.9.1 casper</span></h5>
+<p>casper是配合squashfs使用的一个脚本程序，它会改变initrd的内容。squashfs的全称是squash-file-system，他是一种高度压缩的文件系统，可以大大减小空间占用量。相比较直接使用暴露的文件系统，我们会先将文件系统压缩成squashfs格式，并向bootloader的命令行传入<code>boot=casper</code>参数。</p>
 <p>由于initrd混合了casper，它会识别出这个参数并调用casper相应的脚本，将格式为squashfs的文件系统解压出来放入内存。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;finux&#125; /</span></span><br><span class="line">apt install casper lupin-casper</span><br></pre></td></tr></table></figure>
-
-<h5><span id="3-9-2-isolinux">3.9.2 isolinux</span><a href="#3-9-2-isolinux" class="header-anchor">#</a></h5><blockquote>
-<p> syslinux是一个轻量级的启动装载器，只用Windows的人可能不明白是什么东西，如果玩过Linux，一定知道lilo和grub，是的，所谓轻量级我想就是跟grub们相比而言的，尤其是grub2。syslinux有很多变种（都是官方的）适用于各种媒质，如syslinux用于从微软的文件系统fat 16/32引导，isolinux用于从光盘引导，pexlinux用于从网络引导，extlinux用于从ext2/3文件系统引导。</p>
+<h5><a href="#3-9-2-isolinux" class="header-anchor">#</a><span id="3-9-2-isolinux"> 3.9.2 isolinux</span></h5>
+<blockquote>
+<p>syslinux是一个轻量级的启动装载器，只用Windows的人可能不明白是什么东西，如果玩过Linux，一定知道lilo和grub，是的，所谓轻量级我想就是跟grub们相比而言的，尤其是grub2。syslinux有很多变种（都是官方的）适用于各种媒质，如syslinux用于从微软的文件系统fat 16/32引导，isolinux用于从光盘引导，pexlinux用于从网络引导，extlinux用于从ext2/3文件系统引导。</p>
 </blockquote>
 <p><strong>下面的内容在宿主机环境中操作。</strong></p>
 <p>在与<code>guide</code>目录同级的<code>build_src/syslinux</code>文件夹下找到syslinux源码压缩包，解压并安装。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;host&#125; ~/work/syslinux</span></span><br><span class="line">xz -d syslinux_6.04.tar.xz</span><br><span class="line">tar xvf syslinux_6.04.tar</span><br><span class="line"><span class="built_in">cd</span> syslinux</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
-
-<h5><span id="3-9-3-zhi-zuo-jing-xiang">3.9.3 制作镜像</span><a href="#3-9-3-zhi-zuo-jing-xiang" class="header-anchor">#</a></h5><p>首先下载squashfs压缩工具和制作镜像工具：</p>
+<h5><a href="#3-9-3-zhi-zuo-jing-xiang" class="header-anchor">#</a><span id="3-9-3-zhi-zuo-jing-xiang"> 3.9.3 制作镜像</span></h5>
+<p>首先下载squashfs压缩工具和制作镜像工具：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;host&#125; ~/work</span></span><br><span class="line">sudo apt install squashfs-tools genisoimage</span><br></pre></td></tr></table></figure>
-
 <p>接着创建镜像相关文件夹：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;host&#125; ~/work</span></span><br><span class="line">mkdir -p image/&#123;casper,isolinux,install&#125;</span><br></pre></td></tr></table></figure>
-
 <p>接着我们要把根文件系统压缩成squashfs格式，我们使用一个脚本<code>gen-sfs.sh</code>完成这件事：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># gen-sfs.sh</span></span><br><span class="line">sudo rm ~/work/image/casper/filesystem.squashfs</span><br><span class="line">sudo mksquashfs rootfs image/casper/filesystem.squashfs -e make-distro</span><br></pre></td></tr></table></figure>
-
 <p>其中<code>-e</code>参数表示剔除该文件夹不计入压缩归档。</p>
 <p>接着我们需要将在<code>rootfs/boot</code>中的<code>vmlinuz</code>和<code>initrd</code>复制到外部。这是因为，isolinux视图加载核和虚拟文件系统之前，根文件系统并没有被解压出来，待在其中的vmlinuz和initrd也就无法访问，因此需要将它们暴露在外部。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;host&#125; ~/work</span></span><br><span class="line">sudo cp rootfs/boot/initrd.img-5.7.12 image/casper/initrd.lz</span><br><span class="line">sudo cp rootfs/boot/vmlinuz-5.7.12 image/casper/vmlinuz</span><br></pre></td></tr></table></figure>
-
 <p>这之后，我们需要进行isolinux的配置。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;host&#125; ~/work</span></span><br><span class="line">vim image/isolinux/isolinux.cfg</span><br></pre></td></tr></table></figure>
-
 <p>文件内容如下：</p>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">UI vesamenu.c32</span><br><span class="line">TIMEOUT 30</span><br><span class="line">ONTIMEOUT live</span><br><span class="line">MENU TITLE Finux</span><br><span class="line">MENU BACKGROUND isolinux_background.png</span><br><span class="line"></span><br><span class="line">LABEL desktop</span><br><span class="line">  menu label ^Enter live system</span><br><span class="line">  kernel /casper/vmlinuz</span><br><span class="line">  append boot=casper initrd=/casper/initrd.lz</span><br><span class="line">LABEL memtest</span><br><span class="line">  menu label ^Memory test</span><br><span class="line">  kernel /install/memtest</span><br><span class="line">  append -</span><br><span class="line">label hd</span><br><span class="line">  menu label ^Boot from first hard disk</span><br><span class="line">  localboot 0x80</span><br></pre></td></tr></table></figure>
-
 <p>在这个配置文件中，笔者定义了三个启动入口。其中第一个入口为安装系统liveCD，第二个入口为内存自检。<code>isolinux_background.png</code>为背景图片，可以在与<code>guide</code>目录同级的<code>build_src/isolinux</code>目录下找到。</p>
 <p>然后我们需要将isolinux的相关模块放进isolinux和install文件夹。比如在上面的配置中，我们就显式得使用了<code>vesamenu.c32</code>模块。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;host&#125; ~/work</span></span><br><span class="line">cp -r isolinux_modules/* image/isolinux</span><br><span class="line">cp /boot/memtest86+.bin image/install/memtest</span><br></pre></td></tr></table></figure>
-
-<p>:grey_exclamation:    这里本来应该使用<code>/usr/lib/syslinux/modules/bios/</code>中的c32模块，但是奇怪的是我编译出的6.04版本的syslinux似乎不兼容5.7.12的内核，会引发kernel panic错误。于是我换成了6.03版本的编译产物，可以在<code>build_src/isolinux/modules</code>下找到。</p>
+<p>❕	这里本来应该使用<code>/usr/lib/syslinux/modules/bios/</code>中的c32模块，但是奇怪的是我编译出的6.04版本的syslinux似乎不兼容5.7.12的内核，会引发kernel panic错误。于是我换成了6.03版本的编译产物，可以在<code>build_src/isolinux/modules</code>下找到。</p>
 <p>最后就只剩下制作镜像了，我们依旧使用一个脚本<code>gen-image.sh</code>来帮助完成这件事：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">cd</span> /home/fx/work/image</span><br><span class="line">rm -rf .disk</span><br><span class="line">mkdir .disk</span><br><span class="line"><span class="built_in">cd</span> .disk</span><br><span class="line">touch base_installable</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;full_cd/single&quot;</span> &gt;cd_type</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;finux&quot;</span> &gt;info</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;http://www.fx-admire.club&quot;</span> &gt;release_notes_url</span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line">sudo mkisofs -r -V <span class="string">&quot;<span class="variable">$IMAGE_NAME</span>&quot;</span> -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o ../finux.iso .</span><br><span class="line"><span class="built_in">cd</span> /home/fx</span><br></pre></td></tr></table></figure>
-
 <p>可以看到，在制作镜像之前，我们还写入把镜像相关的信息付给了磁盘标识符<code>.disk</code>文件夹，这个文件夹在casper脚本执行的过程中也会被用到。</p>
 <p>最后运行脚本，大功告成！</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;host&#125; ~/work</span></span><br><span class="line">bash gen-sfs.sh &amp;&amp; bash gen-image.sh</span><br></pre></td></tr></table></figure>
-
-<h3><span id="4-xin-de-he-ti-hui">4 心得和体会</span><a href="#4-xin-de-he-ti-hui" class="header-anchor">#</a></h3><p>作为一个刚刚接触linux系统、各种意义上的小白，在上课听说季老师说可以自己写发行版的时候，我内心感到激动又向往——如果能有一个自己的发行版，那该是多么酷的一件事！但是，这个梦想实施起来的过程却异常艰辛。</p>
+<h3><a href="#4-xin-de-he-ti-hui" class="header-anchor">#</a><span id="4-xin-de-he-ti-hui"> 4 心得和体会</span></h3>
+<p>作为一个刚刚接触linux系统、各种意义上的小白，在上课听说季老师说可以自己写发行版的时候，我内心感到激动又向往——如果能有一个自己的发行版，那该是多么酷的一件事！但是，这个梦想实施起来的过程却异常艰辛。</p>
 <p>首先，网络上关于制作linux发行版资料很少、并且简略，它们大多都互相抄袭，最终指向Linux From Scratch。而Linux From Scratch仅仅是从零搭建根文件系统的流程，离真正的发行版相差甚远，并且难度对于初学者来说异常高。在这样的情况下，我只能上Stack Overflow，Ask Ubuntu，Super User等论坛先咨询方向。然后再根据零星的关键词找到零星的软件，再查看诸如Ubuntu Wiki，Arch Wiki之类的文档。这个过程非常考验我独立解决问题、浏览文档的能力。</p>
 <p>然而有很多问题是文档和论坛都不会有的。比如为什么会出现kernel panic？这串exit code代表了什么？我需要首先查看错误码的含义，猜测问题出现在内存大小上，然后再定位到大小过大的initrd，然后再找到编译内核过程中的问题，逐渐细化并解决问题。再比如calamares安装器的相关使用，相比较其他的开源项目，它的文档编写实在是太差了。差到需要亲自去查看它的源代码才能明白配置文件该怎么写。需要看源代码的还有casper，由于casper的安装会更改initrd（这是我之后才知道的），出现问题后我就解压initrd看其中的init内容，发现调用了casper脚本，再去casper脚本源码中找到确实了.disk信息。</p>
 <p>我觉得，做发行版可能不能提升太多脚本编写的能力，但会大大加强对系统底层的认识。从bootloader，kernel，initramfs。再到/sbin/init，casper和squashfs，紧接着再到systemd，xorg，再到lightdm和DE，一个系统从启动到运行的阶段被拆分开来，清晰地呈现在我的眼前。在配置lightdm的时候，我曾经遇到过很奇怪的问题：kde的桌面环境总是加载失败。为此，我查看了/var/log下的错误日志，发现是xorg没有被授予相关权限，导致初始化失败。而这仅仅是因为我不小心用了<code>chown</code>修改了文件夹所有者。</p>
@@ -411,4 +411,4 @@
 </div><!-- comment system--><div class="container"><hr></div></article><footer id="footer"><div class="container"><div class="bar"><div class="social"><a href="/atom.xml" target="_blank"><i class="fa fa-rss"></i></a></div><div class="footer">© 2020 <a href="/" rel="nofollow">fx aka asososo</a>. Powered by <a rel="nofollow" target="_blank" href="https://hexo.io">Hexo</a>. Theme <a target="_blank" href="https://github.com/lotabout/very-simple">very-simple</a>.</div></div></div></footer><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.css"><script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script><script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script><script>$(document).ready(function() {
     $(".fancybox").fancybox();
 });
-</script></body></html>
+</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
