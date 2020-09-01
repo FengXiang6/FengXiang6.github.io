@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>数据库复习笔记 | fx&#39;s blog</title>
+    <meta name="description" content="A blog based on hexo."/>
+    <meta name="keywords" content="blog,cg,cv,ml"/>
+    <meta name="HandheldFriendly" content="True"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="google-site-verification" content=""/>
+    <meta name="baidu-site-verification" content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="上天保佑我数据库考出好成绩w！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库复习笔记">
+<meta property="og:url" content="http://yoursite.com/2020/09/01/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="fx&#39;s blog">
+<meta property="og:description" content="上天保佑我数据库考出好成绩w！">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/2020/09/01/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/.%5Cimage-20200901193140580.png">
+<meta property="og:image" content="http://yoursite.com/2020/09/01/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/.%5Cimage-20200901193213649.png">
+<meta property="og:image" content="http://yoursite.com/2020/09/01/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/.%5Cimage-20200901193229778.png">
+<meta property="og:image" content="http://yoursite.com/2020/09/01/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/.%5Cimage-20200901193349590.png">
+<meta property="og:image" content="http://yoursite.com/2020/09/01/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/.%5Cimage-20200901193646606.png">
+<meta property="og:image" content="http://yoursite.com/2020/09/01/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/.%5Cimage-20200901194227814.png">
+<meta property="og:image" content="http://yoursite.com/2020/09/01/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/.%5Cimage-20200901195402663.png">
+<meta property="og:image" content="http://yoursite.com/2020/09/01/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/.%5Cimage-20200901195525417.png">
+<meta property="og:image" content="http://yoursite.com/2020/09/01/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/.%5Cimage-20200901195735768.png">
+<meta property="og:image" content="http://yoursite.com/2020/09/01/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/.%5Cimage-20200901200824012.png">
+<meta property="og:image" content="http://yoursite.com/2020/09/01/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/.%5Cimage-20200901201205356.png">
+<meta property="og:image" content="http://yoursite.com/2020/09/01/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/.%5Cimage-20200901201317278.png">
+<meta property="og:image" content="http://yoursite.com/2020/09/01/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/.%5Cimage-20200901201458213.png">
+<meta property="og:image" content="http://yoursite.com/2020/09/01/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/.%5Cimage-20200901205412228.png">
+<meta property="og:image" content="http://yoursite.com/2020/09/01/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/.%5Cimage-20200901205841508.png">
+<meta property="og:image" content="http://yoursite.com/2020/09/01/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/.%5Cimage-20200901210419653.png">
+<meta property="article:published_time" content="2020-09-01T04:35:38.000Z">
+<meta property="article:modified_time" content="2020-09-01T14:58:46.014Z">
+<meta property="article:author" content="fx aka asososo">
+<meta property="article:tag" content="复习">
+<meta property="article:tag" content="数据库">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/09/01/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/.%5Cimage-20200901193140580.png">
+    
+
+    <!-- Favicon -->
+    
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata|Roboto:300,400,700" rel="stylesheet">
+
+    
+<link rel="stylesheet" href="/style.css">
+
+    <script>
+      function setLoadingBarProgress(num) {
+        document.getElementById('loading-bar').style.width = num + "%";
+      }
+    </script>
+
+    
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.1.1"></head>
+
+<body>
+
+<div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+<script>setLoadingBarProgress(20)</script>
+
+<div id="site-wrapper">
+
+    <header id="header">
+    <div id="header-wrapper" class="clearfix">
+        <a id="logo" href="/">
+            <img src="/img/logo.png"/>
+            <span id="site-desc">
+                create and admire
+            </span>
+        </a>
+        <button id="site-nav-switch">
+            <span class="icon icon-menu"></span>
+        </button>
+    </div>
+</header>
+    <script>setLoadingBarProgress(40);</script>
+
+    <main id="main" role="main">
+        <article id="post-数据库复习笔记"
+         class="post article white-box article-type-post"
+         itemscope itemprop="blogPost">
+    <h2 class="title">
+        <a href="/2020/09/01/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+            数据库复习笔记
+        </a>
+    </h2>
+    <time>
+        Sep 1, 2020
+    </time>
+    <section class="content">
+        <div class="article-entry" itemprop="articleBody">
+            <p>上天保佑我数据库考出好成绩w！</p>
+<a id="more"></a>
+<h2><a href="#chapter-1-introduction" class="header-anchor">#</a><span id="chapter-1-introduction"> Chapter 1: Introduction</span></h2>
+<h3><a href="#characteristics-of-database" class="header-anchor">#</a><span id="characteristics-of-database"> Characteristics of Database</span></h3>
+<ol>
+<li>data persistence（数据持久性）</li>
+<li>convenience in accessing data(数据便利性访问)</li>
+<li>data integrity（数据完整性）</li>
+<li>concurrency control for multiple user(多用户并发控制)</li>
+<li>failure recovery（故障恢复）</li>
+<li>security  control（安全控制）</li>
+</ol>
+<h2><a href="#chapter-2-relational-model" class="header-anchor">#</a><span id="chapter-2-relational-model"> Chapter 2: Relational Model</span></h2>
+<h3><a href="#keys" class="header-anchor">#</a><span id="keys"> Keys</span></h3>
+<ol>
+<li>superkey: sufficient to identify tuple, e.g. {ID} or {ID, name} or {ID, name, age}</li>
+<li>candidate key: minimal superkey</li>
+<li>primary key: one of the candidate key</li>
+<li>foreign key</li>
+</ol>
+<h3><a href="#relational-algebra" class="header-anchor">#</a><span id="relational-algebra"> Relational Algebra</span></h3>
+<h4><a href="#basic" class="header-anchor">#</a><span id="basic"> Basic</span></h4>
+<p><span class="katex-error" title="ParseError: KaTeX parse error: Undefined control sequence: \and at position 1: \̲a̲n̲d̲">\and</span>(and), <span class="katex-error" title="ParseError: KaTeX parse error: Undefined control sequence: \or at position 1: \̲o̲r̲">\or</span>(or), <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">¬</mi></mrow><annotation encoding="application/x-tex">\neg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord">¬</span></span></span></span>(not), <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>σ</mi></mrow><annotation encoding="application/x-tex">\sigma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">σ</span></span></span></span>(select), <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">Π</mi></mrow><annotation encoding="application/x-tex">\Pi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">Π</span></span></span></span>(project),<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⋈</mo></mrow><annotation encoding="application/x-tex">\Join</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.51em;vertical-align:-0.005em;"></span><span class="mrel">⋈</span></span></span></span>(natural join)</p>
+<p>for project <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">Π</mi></mrow><annotation encoding="application/x-tex">\Pi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">Π</span></span></span></span>: Duplicate rows removed from result, since relations are sets</p>
+<h4><a href="#join" class="header-anchor">#</a><span id="join"> Join</span></h4>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi><msub><mo>⋈</mo><mi>θ</mi></msub><mi>s</mi><mo>=</mo><msub><mi>σ</mi><mi>θ</mi></msub><mo stretchy="false">(</mo><mi>r</mi><mo>×</mo><mi>s</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">r\Join_\theta s=\sigma_\theta(r\times s)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.655em;vertical-align:-0.15em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel"><span class="mrel">⋈</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">σ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mclose">)</span></span></span></span></p>
+<p><img src=".%5Cimage-20200901193140580.png" alt="image-20200901193140580"></p>
+<p><img src=".%5Cimage-20200901193213649.png" alt="image-20200901193213649"></p>
+<p><img src=".%5Cimage-20200901193229778.png" alt="image-20200901193229778"></p>
+<h4><a href="#division" class="header-anchor">#</a><span id="division"> Division</span></h4>
+<p><img src=".%5Cimage-20200901193349590.png" alt="image-20200901193349590"></p>
+<h4><a href="#aggregate" class="header-anchor">#</a><span id="aggregate"> Aggregate</span></h4>
+<p><img src=".%5Cimage-20200901193646606.png" alt="image-20200901193646606"></p>
+<h2><a href="#chapter-3-sql" class="header-anchor">#</a><span id="chapter-3-sql"> Chapter 3: SQL</span></h2>
+<h3><a href="#sentence" class="header-anchor">#</a><span id="sentence"> Sentence</span></h3>
+<h4><a href="#create-table" class="header-anchor">#</a><span id="create-table"> create table</span></h4>
+<p><img src=".%5Cimage-20200901194227814.png" alt="image-20200901194227814"></p>
+<h4><a href="#drop-and-alter" class="header-anchor">#</a><span id="drop-and-alter"> Drop and Alter</span></h4>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> student</span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student <span class="keyword">add</span> <span class="keyword">resume</span> <span class="built_in">varchar</span>(<span class="number">256</span>)</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> r <span class="keyword">drop</span> [attributeName]</span><br></pre></td></tr></table></figure>
+<h4><a href="#order" class="header-anchor">#</a><span id="order"> Order</span></h4>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span> <span class="keyword">name</span></span><br><span class="line"><span class="keyword">from</span> instructor</span><br><span class="line"><span class="comment">-------------</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">name</span></span><br><span class="line"><span class="comment">-------------</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">name</span> <span class="keyword">desc</span></span><br><span class="line"><span class="comment">-------------</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> dept_name, <span class="keyword">name</span></span><br></pre></td></tr></table></figure>
+<h4><a href="#limit" class="header-anchor">#</a><span id="limit"> Limit</span></h4>
+<p><img src=".%5Cimage-20200901195402663.png" alt="image-20200901195402663"></p>
+<h4><a href="#set-operation" class="header-anchor">#</a><span id="set-operation"> Set operation</span></h4>
+<p><img src=".%5Cimage-20200901195525417.png" alt="image-20200901195525417"></p>
+<p>To retain all duplicates use the corresponding multiset versions <code>union all</code>, <code>intersect all</code> and <code>except all</code>.</p>
+<h4><a href="#aggregate" class="header-anchor">#</a><span id="aggregate"> Aggregate</span></h4>
+<p><img src=".%5Cimage-20200901195735768.png" alt="image-20200901195735768"></p>
+<h4><a href="#nested" class="header-anchor">#</a><span id="nested"> Nested</span></h4>
+<p><img src=".%5Cimage-20200901200824012.png" alt="image-20200901200824012"></p>
+<p><img src=".%5Cimage-20200901201205356.png" alt="image-20200901201205356"></p>
+<p><code>exist</code>, <code>not exist</code></p>
+<h4><a href="#insert" class="header-anchor">#</a><span id="insert"> Insert</span></h4>
+<p><img src=".%5Cimage-20200901201317278.png" alt="image-20200901201317278"></p>
+<h4><a href="#update" class="header-anchor">#</a><span id="update"> Update</span></h4>
+<p><img src=".%5Cimage-20200901201458213.png" alt="image-20200901201458213"></p>
+<h2><a href="#chapter-4-intermediate-sql" class="header-anchor">#</a><span id="chapter-4-intermediate-sql"> Chapter 4: Intermediate SQL</span></h2>
+<h3><a href="#join" class="header-anchor">#</a><span id="join"> Join</span></h3>
+<p><img src=".%5Cimage-20200901205412228.png" alt="image-20200901205412228"></p>
+<h3><a href="#check" class="header-anchor">#</a><span id="check"> Check</span></h3>
+<p><img src=".%5Cimage-20200901205841508.png" alt="image-20200901205841508"></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">check</span> ((course_id, sec_id, semester, <span class="keyword">year</span>) <span class="keyword">in</span></span><br><span class="line">	(<span class="keyword">select</span> course_id, sec_id, semester, <span class="keyword">year</span> <span class="keyword">from</span> teachers))</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create assertion NAME check (P)</span><br></pre></td></tr></table></figure>
+<h3><a href="#authorization" class="header-anchor">#</a><span id="authorization"> Authorization</span></h3>
+<p><img src=".%5Cimage-20200901210419653.png" alt="image-20200901210419653"></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">grant</span> &lt;priviliege_list&gt; <span class="keyword">on</span> &lt;relation_name <span class="keyword">or</span> view_name&gt; <span class="keyword">to</span> &lt;user_list&gt;</span><br><span class="line"><span class="keyword">revoke</span> &lt;priviliege_list&gt; <span class="keyword">on</span> &lt;relation_name <span class="keyword">or</span> view_name&gt; <span class="keyword">from</span> &lt;user_list&gt;</span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">all</span> <span class="keyword">privileges</span> <span class="keyword">on</span> &lt;table_name&gt; <span class="keyword">to</span> &lt;user_list&gt;</span><br></pre></td></tr></table></figure>
+<h2><a href="#chapter-5-advanced-sql" class="header-anchor">#</a><span id="chapter-5-advanced-sql"> Chapter 5: Advanced SQL</span></h2>
+<h2><a href="#chapter-7-entiry-relational-model" class="header-anchor">#</a><span id="chapter-7-entiry-relational-model"> Chapter 7: Entiry-Relational Model</span></h2>
+<h2><a href="#chapter-8-relational-database-design" class="header-anchor">#</a><span id="chapter-8-relational-database-design"> Chapter 8: Relational Database Design</span></h2>
+<h2><a href="#chapter-10-storage-and-file-structure" class="header-anchor">#</a><span id="chapter-10-storage-and-file-structure"> Chapter 10: Storage and File Structure</span></h2>
+<h2><a href="#chapter-11-indexing-and-hasing" class="header-anchor">#</a><span id="chapter-11-indexing-and-hasing"> Chapter 11: Indexing and Hasing</span></h2>
+<h2><a href="#chapter-12-query-processing" class="header-anchor">#</a><span id="chapter-12-query-processing"> Chapter 12: Query Processing</span></h2>
+<h2><a href="#chapter-13-query-optimization" class="header-anchor">#</a><span id="chapter-13-query-optimization"> Chapter 13: Query Optimization</span></h2>
+<h2><a href="#chapter-14-transactions" class="header-anchor">#</a><span id="chapter-14-transactions"> Chapter 14: Transactions</span></h2>
+<h2><a href="#chapter-15-concurrency-control" class="header-anchor">#</a><span id="chapter-15-concurrency-control"> Chapter 15: Concurrency Control</span></h2>
+<h2><a href="#chapter-16-recovery-system" class="header-anchor">#</a><span id="chapter-16-recovery-system"> Chapter 16: Recovery System</span></h2>
+<h2><a href="#chapter-22-object-based-databases" class="header-anchor">#</a><span id="chapter-22-object-based-databases"> Chapter 22: Object-Based Databases</span></h2>
+<h2><a href="#chapter-23-xml" class="header-anchor">#</a><span id="chapter-23-xml"> Chapter 23: XML</span></h2>
+
+        </div>
+        <div class="article-tags tags">
+            
+                <a class="tag-none-link" href="/tags/%E5%A4%8D%E4%B9%A0/" rel="tag">复习</a><a class="tag-none-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a>
+            
+        </div>
+    </section>
+</article>
+
+
+
+
+
+        <script>setLoadingBarProgress(60);</script>
+    </main>
+
+    <footer id="footer" class="clearfix">
+
+    
+
+    <div class="social-wrapper">
+        
+            
+                <a href="https://github.com/FengXiang6" class="social github"
+                   target="_blank" rel="external">
+                    <span class="icon icon-github"></span>
+                </a>
+            
+        
+    </div>
+
+    <div class="theme-by">Theme <span class="codename">Memory</span> designed by <a href="https://artifact.me/"
+                                                                                    target="_blank">Art Chen</a>.
+    </div>
+    <div>&copy; <a href="/">fx&#39;s blog</a></div>
+
+</footer>
+
+
+    <script>setLoadingBarProgress(80);</script>
+    <div class="overlay"></div>
+</div>
+
+<div class="site-sidebar" id="site-sidebar">
+
+    
+
+    <div class="sidebar-switch clearfix "
+         style="display: none">
+        <a class="dark-btn active" data-toggle="toc">
+            <span class="icon icon-list"></span>
+            <span class="text">Index</span>
+        </a>
+        <a class="dark-btn" data-toggle="bio">
+            <span class="icon icon-person"></span>
+            <span class="text">Bio</span>
+        </a>
+    </div>
+
+    <div class="site-toc "
+         style="display: none">
+        
+            <div class="no-index">No Index</div>
+        
+    </div>
+
+    <div class="site-bio show"
+         style="display: block">
+
+        <div class="about-me clearfix">
+            <div class="avatar">
+                <img src="/img/avatar.png"/>
+            </div>
+            <div class="info">
+                <a class="name dark-btn" href="/about">
+                    fx aka asososo
+                </a>
+            </div>
+            <div class="info">
+                <span class="item desc">
+                    
+                </span>
+            </div>
+        </div>
+
+        <div class="menu section">
+            <ul class="clearfix">
+                
+                    <li class="left">
+                        <a href="/about"
+                           onfocus="this.blur();"
+                           class="nav-about dark-btn block">
+                            About
+                        </a>
+                    </li>
+                
+                    <li class="right">
+                        <a href="/archives"
+                           onfocus="this.blur();"
+                           class="nav-archives dark-btn block">
+                            Archives
+                        </a>
+                    </li>
+                
+                    <li class="left">
+                        <a href="/categories"
+                           onfocus="this.blur();"
+                           class="nav-categories dark-btn block">
+                            Categories
+                        </a>
+                    </li>
+                
+                    <li class="right">
+                        <a href="/tags"
+                           onfocus="this.blur();"
+                           class="nav-tags dark-btn block">
+                            Tags
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="shortcuts">
+        <a href="#header" class="top window-nav dark-btn" id="go-top">
+            <span class="icon icon-chevron-thin-up"></span>
+        </a>
+        <a class="close dark-btn" id="sidebar-close">
+            <span class="icon icon-close"></span>
+        </a>
+        <a href="#footer" class="top window-nav dark-btn" id="go-bottom">
+            <span class="icon icon-chevron-thin-down"></span>
+        </a>
+    </div>
+
+</div>
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script>window.jQuery || document.write('<script src="/js/jquery.min.js"><\/script>')</script>
+
+
+<script src="/js/jquery.fitvids.js"></script>
+
+<script>
+  var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+  var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+  var ALGOLIA_API_KEY = "";
+  var ALGOLIA_APP_ID = "";
+  var ALGOLIA_INDEX_NAME = "";
+  var AZURE_SERVICE_NAME = "";
+  var AZURE_INDEX_NAME = "";
+  var AZURE_QUERY_KEY = "";
+  var SEARCH_SERVICE = "";
+  var universalSearchConfig = {};
+  if (SEARCH_SERVICE === 'google') {
+    universalSearchConfig = {
+      searchService: SEARCH_SERVICE,
+      apiKey: GOOGLE_CUSTOM_SEARCH_API_KEY,
+      engineId: GOOGLE_CUSTOM_SEARCH_ENGINE_ID,
+      imagePath: "/img/"
+    };
+  } else if (SEARCH_SERVICE === 'algolia') {
+    universalSearchConfig = {
+      searchService: SEARCH_SERVICE,
+      apiKey: ALGOLIA_API_KEY,
+      appId: ALGOLIA_APP_ID,
+      indexName: ALGOLIA_INDEX_NAME,
+      imagePath: "/img/"
+    };
+  } else if (SEARCH_SERVICE === 'azure') {
+    universalSearchConfig = {
+      searchService: SEARCH_SERVICE,
+      serviceName: AZURE_SERVICE_NAME,
+      indexName: AZURE_INDEX_NAME,
+      apiKey: AZURE_QUERY_KEY,
+      imagePath: "/img/"
+    };
+  }
+</script>
+
+<script src="/js/app.js"></script>
+
+
+<script src="/js/search.js"></script>
+
+
+
+
+
+<script>setLoadingBarProgress(100);</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>
